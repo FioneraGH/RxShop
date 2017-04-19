@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.centling.widget.FlexibleImageView
+        android:id="@+id/iv_catalog_goods"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        app:proportion_height="5"
+        app:proportion_width="4" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_catalog_goods_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="¥368.00" />
+
+        <TextView
+            android:id="@+id/tv_catalog_goods_previous_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:paddingTop="2dp"
+            android:textColor="@color/grey1"
+            android:textSize="12sp"
+            tools:text="¥368.00" />
+
+        <TextView
+            android:id="@+id/tv_catalog_goods_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_white_dark_red_corner5"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textColor="@color/dark_red_default"
+            android:textSize="12sp"
+            tools:text="99折" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_catalog_goods_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:lineSpacingExtra="2dp"
+        android:maxLines="2"
+        android:paddingBottom="3dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="2dp"
+        android:text="推荐分类"
+        android:textColor="@color/text_default"
+        android:textSize="12sp" />
+</LinearLayout>

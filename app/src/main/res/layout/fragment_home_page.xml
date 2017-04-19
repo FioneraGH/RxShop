@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:paddingTop="@dimen/statusbar_view_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@mipmap/ic_launcher"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="搜索" />
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@mipmap/ic_launcher"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+
+        <ScrollView
+            android:overScrollMode="never"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white1"
+            android:orientation="vertical"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/banner_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    app:indicator_drawable_selected="@drawable/shape_banner_indicator_selected"
+                    app:indicator_drawable_unselected="@drawable/shape_banner_indicator_unselected"
+                    app:indicator_height="8dp"
+                    app:indicator_width="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.centling.widget.DrawableTextView
+                        android:id="@+id/iv_home_vip"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="3dp"
+                        android:drawableTop="@drawable/ic_home_vip"
+                        android:gravity="center"
+                        android:text="VIP"
+                        android:textColor="@color/grey"
+                        app:top_height="60dp"
+                        app:top_width="60dp"/>
+
+                    <com.centling.widget.DrawableTextView
+                        android:id="@+id/iv_home_brand"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="3dp"
+                        android:drawableTop="@drawable/ic_home_brand"
+                        android:gravity="center"
+                        android:text="品牌"
+                        android:textColor="@color/grey"
+                        app:top_height="60dp"
+                        app:top_width="60dp"/>
+
+                    <com.centling.widget.DrawableTextView
+                        android:id="@+id/iv_home_custom"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="3dp"
+                        android:drawableTop="@drawable/ic_home_custom"
+                        android:gravity="center"
+                        android:text="私属定制"
+                        android:textColor="@color/grey"
+                        app:top_height="60dp"
+                        app:top_width="60dp"/>
+
+                    <com.centling.widget.DrawableTextView
+                        android:id="@+id/iv_home_cool"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="3dp"
+                        android:drawableTop="@drawable/ic_home_cool"
+                        android:gravity="center"
+                        android:text="酷品"
+                        android:textColor="@color/grey"
+                        app:top_height="60dp"
+                        app:top_width="60dp"/>
+
+                </LinearLayout>
+
+                <com.centling.widget.FlexibleImageView
+                    android:id="@+id/iv_home_recommended_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:scaleType="centerCrop" />
+
+                <com.centling.widget.FlexibleImageView
+                    android:id="@+id/iv_home_recommended_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="centerCrop" />
+
+                <com.centling.widget.FlexibleImageView
+                    android:id="@+id/iv_home_recommended_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:scaleType="centerCrop" />
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+</layout>

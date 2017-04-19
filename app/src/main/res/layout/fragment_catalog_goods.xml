@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <in.srain.cube.views.ptr.PtrClassicFrameLayout
+        android:id="@+id/ptr_catalog_goods"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.centling.widget.AutoRecyclerView
+            android:id="@+id/rv_catalog_right_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp" />
+    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+</layout>
+
+
