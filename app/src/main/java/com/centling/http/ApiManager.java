@@ -1,28 +1,23 @@
 package com.centling.http;
 
-import android.text.TextUtils;
-
 import com.centling.entity.BaseEntity;
 import com.centling.entity.CatalogBean;
 import com.centling.entity.CatalogGoodsBean;
 import com.centling.entity.Empty;
 import com.centling.entity.FriendBean;
-import com.centling.entity.GoodsDetailBean;
 import com.centling.entity.HomeBean;
 import com.centling.entity.LoginBean;
+import com.centling.entity.OrderBean;
 
 import org.json.JSONObject;
 
 import java.util.Map;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
-import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
@@ -45,6 +40,12 @@ public class ApiManager {
     public static Observable<CatalogGoodsBean> getCatalogGoodsList(String gc_id, int curPage,
                                                                    int pageSize) {
         return Api.getInstance().getApiService().getCatalogGoodsList(gc_id, curPage, pageSize).map(
+                new CommonFilter<>()).compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<OrderBean> getOrderList(int curPage, int pageSize,
+                                                     Map<String, String> info) {
+        return Api.getInstance().getApiService().getOrderList(curPage, pageSize, info).map(
                 new CommonFilter<>()).compose(ApiManager.httpTransformer());
     }
 
@@ -86,6 +87,41 @@ public class ApiManager {
                 .compose(ApiManager.httpTransformer());
     }
 
+    public static Observable<String> orderSign(Map<String, String> info) {
+        return Api.getInstance().getApiService().orderSign(info).map(new NormalFilter())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<Empty> backGold(Map<String, String> info) {
+        return Api.getInstance().getApiService().backGold(info).map(new CommonFilter<>())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<Empty> confirmDlyp(Map<String, String> info) {
+        return Api.getInstance().getApiService().confirmDlyp(info).map(new CommonFilter<>())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<Empty> orderCancel(Map<String, String> info) {
+        return Api.getInstance().getApiService().orderCancel(info).map(new CommonFilter<>())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<Empty> orderDelete(Map<String, String> info) {
+        return Api.getInstance().getApiService().orderDelete(info).map(new CommonFilter<>())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<Empty> orderRefund(Map<String, String> info) {
+        return Api.getInstance().getApiService().orderRefund(info).map(new CommonFilter<>())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<Empty> orderReceive(Map<String, String> info) {
+        return Api.getInstance().getApiService().orderReceive(info).map(new CommonFilter<>())
+                .compose(ApiManager.httpTransformer());
+    }
+
     public static Observable<String> addFriend(Map<String, String> info) {
         return Api.getInstance().getNoGsonApiService().addFriend(info).map(new NormalFilter(true))
                 .compose(ApiManager.httpTransformer());
@@ -111,6 +147,36 @@ public class ApiManager {
                 .compose(ApiManager.httpTransformer());
     }
 
+    public static Observable<String> fetchMemberPoint(Map<String, String> info) {
+        return Api.getInstance().getNoGsonApiService().fetchMemberPoint(info).map(new NormalFilter())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<String> trackUnreadMsg(Map<String, String> info) {
+        return Api.getInstance().getNoGsonApiService().trackUnreadMsg(info).map(new NormalFilter())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<String> isVip(Map<String, String> info) {
+        return Api.getInstance().getNoGsonApiService().isVip(info).map(new NormalFilter())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<String> orderPrepay(Map<String, String> info) {
+        return Api.getInstance().getNoGsonApiService().orderPrepay(info).map(new NormalFilter())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<String> orderPayAgain(Map<String, String> info) {
+        return Api.getInstance().getNoGsonApiService().orderPayAgain(info).map(new NormalFilter())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<String> orderSignWx(Map<String, Object> info) {
+        return Api.getInstance().getNoGsonApiService().orderSignWx(info).map(new NormalFilter())
+                .compose(ApiManager.httpTransformer());
+    }
+
     private static class NormalFilter
             implements Function<ResponseBody, String> {
         private boolean needFilter = true;
@@ -125,10 +191,10 @@ public class ApiManager {
         @Override
         public String apply(ResponseBody t) throws Exception {
             String json = t.string();
-            JSONObject jsonObject = new JSONObject(json);
             if (!needFilter) {
-                return t.string();
+                return json;
             }
+            JSONObject jsonObject = new JSONObject(json);
             if (200 != jsonObject.getInt("statusCode")) {
                 throw new HttpTimeException(jsonObject.getString("statusMsg"));
             }

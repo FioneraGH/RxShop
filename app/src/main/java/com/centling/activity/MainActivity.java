@@ -1,5 +1,6 @@
 package com.centling.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -10,14 +11,20 @@ import com.centling.R;
 import com.centling.event.CommonEvent;
 import com.centling.fragment.CatalogSlideFragment;
 import com.centling.fragment.HomePageFragment;
+import com.centling.fragment.UserFragment;
+import com.centling.http.ApiManager;
 import com.centling.util.ShowToast;
+import com.centling.util.UserInfoUtil;
 import com.jaeger.library.StatusBarUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -30,7 +37,7 @@ public class MainActivity
     private HomePageFragment homeFragment;
     private CatalogSlideFragment catalogFragment;
     private HomePageFragment cartFragment;
-    private HomePageFragment userFragment;
+    private UserFragment userFragment;
 
     private BottomNavigationBar bottomNavigationBar;
 
@@ -41,13 +48,12 @@ public class MainActivity
 
         EventBus.getDefault().register(this);
 
-        bottomNavigationBar = (BottomNavigationBar) findViewById(
-                R.id.bottom_navigation_bar);
+        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
 
         homeFragment = new HomePageFragment();
         catalogFragment = new CatalogSlideFragment();
         cartFragment = new HomePageFragment();
-        userFragment = new HomePageFragment();
+        userFragment = new UserFragment();
 
         addFragment(homeFragment);
         addFragment(catalogFragment);
@@ -55,13 +61,17 @@ public class MainActivity
         addFragment(userFragment);
         showSelectedFragment(0);
 
-        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.iv_guide_home, "首页")).addItem(
-                new BottomNavigationItem(R.drawable.iv_guide_catagory, "分类")).addItem(
+        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.iv_guide_home, "首页"))
+                .addItem(new BottomNavigationItem(R.drawable.iv_guide_catagory, "分类")).addItem(
                 new BottomNavigationItem(R.drawable.iv_guide_cart, "购物")).addItem(
                 new BottomNavigationItem(R.drawable.iv_guide_personal, "我的")).initialise();
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int i) {
+                if ((2 == i || 3 == i) && !UserInfoUtil.isLogin()) {
+                    startActivity(new Intent(mContext, LoginActivity.class));
+                    return;
+                }
                 showSelectedFragment(i);
             }
 
@@ -77,12 +87,12 @@ public class MainActivity
         });
 
         lifecycle.throttleFirst(TIME_TO_EXIT, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
-                .compose(this.bindLifecycle()).subscribe(
-                integer -> ShowToast.show("再按一次退出"), Throwable::printStackTrace);
+                .compose(bindLifecycle()).subscribe(integer -> ShowToast.show("再按一次退出"),
+                Throwable::printStackTrace);
 
         lifecycle.timeInterval(AndroidSchedulers.mainThread()).skip(1).filter(
-                timed -> timed.time() < TIME_TO_EXIT).compose(this.bindLifecycle())
-                .subscribe(timed -> finish(), Throwable::printStackTrace);
+                timed -> timed.time() < TIME_TO_EXIT).compose(bindLifecycle()).subscribe(
+                timed -> finish(), Throwable::printStackTrace);
     }
 
     private void addFragment(Fragment fragment) {
@@ -95,10 +105,10 @@ public class MainActivity
 
     private void showSelectedFragment(int clickPos) {
         Fragment fragment = fragmentList.get(clickPos);
-        if(-1 != clickPos && clickPos == prePos){
-                return;
+        if (-1 != clickPos && clickPos == prePos) {
+            return;
         }
-        hideAndShowFragment(fragment,-1 == clickPos);
+        hideAndShowFragment(fragment, -1 == clickPos);
         prePos = clickPos;
     }
 
@@ -121,6 +131,25 @@ public class MainActivity
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        tryToFetchScore();
+    }
+
+    private void tryToFetchScore() {
+        if (!UserInfoUtil.isLogin()){
+            return;
+        }
+        Map<String,String> params = new HashMap<>();
+        ApiManager.fetchMemberPoint(params).subscribe(s -> {
+            JSONObject object = new JSONObject(s);
+            JSONObject resultObj = object.getJSONObject("result");
+            long addPoint = Long.parseLong(resultObj.getString("points"));
+            ShowToast.show("签到成功,积分+" + addPoint);
+        }, throwable -> {});
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
@@ -135,7 +164,7 @@ public class MainActivity
 
     @Override
     protected void setStatusBar() {
-        StatusBarUtil.setTranslucentForImageViewInFragment(this,null);
+        StatusBarUtil.setTranslucentForImageViewInFragment(this, null);
     }
 
     @Subscribe

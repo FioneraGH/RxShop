@@ -1,6 +1,7 @@
 package com.centling.http;
 
 import com.centling.BaseApplication;
+import com.centling.util.RetrofitStringConverter;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Api {
 
     private static ApiService apiService;
-    private static ApiService noJsonApiService;
+    private static ApiService noGsonApiService;
 
     private static final int CONNECT_TIMEOUT = 20;
     private static final int READ_TIMEOUT = 15;
@@ -60,7 +61,7 @@ public class Api {
                 apiService = retrofitBuilder.addConverterFactory(GsonConverterFactory.create())
                         .build().create(ApiService.class);
             } else {
-                noJsonApiService = retrofitBuilder.build().create(ApiService.class);
+                noGsonApiService = retrofitBuilder.addConverterFactory(RetrofitStringConverter.create()).build().create(ApiService.class);
             }
     }
 
@@ -72,9 +73,9 @@ public class Api {
     }
 
     public ApiService getNoGsonApiService() {
-        if (noJsonApiService == null) {
+        if (noGsonApiService == null) {
             init(false);
         }
-        return noJsonApiService;
+        return noGsonApiService;
     }
 }

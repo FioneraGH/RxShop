@@ -21,6 +21,7 @@ import com.centling.util.ImageUtil;
 import com.centling.util.SPUtil;
 import com.centling.util.ShowToast;
 import com.centling.util.UserInfoUtil;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -193,9 +194,9 @@ public class SearchActivity
         }
         showLoading("正在搜索");
         Map<String, String> params = new HashMap<>();
-        params.put("key", UserInfoUtil.getKey());
         params.put("mobile", phone);
-        ApiManager.searchFriend(params).compose(bindLifecycle()).subscribe(friendBean -> {
+        ApiManager.searchFriend(params).compose(bindUntil(
+                ActivityEvent.DESTROY)).subscribe(friendBean -> {
             dismissLoading();
             if (friendBean.getMemberlist().size() > 0) {
                 llFriend.setVisibility(View.VISIBLE);
@@ -254,9 +255,9 @@ public class SearchActivity
     private void addFriend(String mid) {
         showLoading("正在添加好友");
         Map<String, String> params = new HashMap<>();
-        params.put("key", UserInfoUtil.getKey());
         params.put("mid", mid);
-        ApiManager.addFriend(params).compose(bindLifecycle()).subscribe(json -> {
+        ApiManager.addFriend(params).compose(bindUntil(
+                ActivityEvent.DESTROY)).subscribe(json -> {
             dismissLoading();
             String followState;
             try {

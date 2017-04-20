@@ -58,4 +58,19 @@
         <attr name="proportion_height" format="integer"/>
         <attr name="proportion_width" format="integer"/>
     </declare-styleable>
+
+    <!--红点提示的样式-->
+    <declare-styleable name="BGABadgeView">
+        <attr name="badge_bgColor" format="reference|color" />
+        <attr name="badge_textColor" format="reference|color" />
+        <attr name="badge_textSize" format="reference|dimension" />
+        <attr name="badge_verticalMargin" format="reference|dimension" />
+        <attr name="badge_horizontalMargin" format="reference|dimension" />
+        <attr name="badge_padding" format="reference|dimension" />
+        <attr name="badge_gravity" format="enum">
+            <enum name="rightTop" value="0" />
+            <enum name="rightCenter" value="1" />
+            <enum name="rightBottom" value="2" />
+        </attr>
+    </declare-styleable>
 </resources>

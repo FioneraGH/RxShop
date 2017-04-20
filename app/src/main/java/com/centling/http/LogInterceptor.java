@@ -30,7 +30,8 @@ class LogInterceptor
         implements Interceptor {
 
     private Gson mGson = new Gson();
-    private Type mParseType = new TypeToken<HashMap<String,String>>(){}.getType();
+    private Type mParseType = new TypeToken<HashMap<String, Object>>() {
+    }.getType();
 
     @Override
     public Response intercept(Chain chain) throws IOException {
@@ -56,15 +57,16 @@ class LogInterceptor
                     /*
                     try to inject new params
                      */
-                    Map<String, String> newParams = new HashMap<>();
-                    HashMap<String, String> originParams = mGson.fromJson(buffer.readUtf8(),
+                    Map<String, Object> newParams = new HashMap<>();
+                    HashMap<String, Object> originParams = mGson.fromJson(buffer.readUtf8(),
                             mParseType);
                     newParams.putAll(originParams);
-                    newParams.put("key",UserInfoUtil.getKey());
-                    newParams.put("client","android");
+                    newParams.put("key", UserInfoUtil.getKey());
+                    newParams.put("client", "android");
 
                     request = request.newBuilder().post(RequestBody
-                            .create(MediaType.parse("application/json; charset=utf-8"), mGson.toJson(newParams))).build();
+                            .create(MediaType.parse("application/json; charset=utf-8"),
+                                    mGson.toJson(newParams))).build();
 
                     buffer.clear();
                     request.body().writeTo(buffer);

@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.centling.widget.PullToZoomScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/divider_1dp_grey3"
+            android:orientation="vertical"
+            android:showDividers="middle|end">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="240dp">
+
+                <ImageView
+                    android:id="@+id/background_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+                <LinearLayout
+                    android:id="@+id/ll_user_info_my_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <!--标题栏-->
+                    <LinearLayout
+                        android:paddingTop="@dimen/statusbar_view_height"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/user_title_bar"
+                        android:background="@color/trans_grey0"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:id="@+id/user_left_view"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="我的"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <ImageView
+                            android:id="@+id/iv_user_info_setting"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:padding="15dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_user_setting" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/trans_grey0"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp">
+
+                        <!--头像栏-->
+                        <RelativeLayout
+                            android:id="@+id/tv_user_info_my_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
+
+                            <com.centling.widget.CircleTextImageView
+                                android:id="@+id/iv_user_info_user_avator"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginLeft="20dp"
+                                android:src="@drawable/iv_avatar_default" />
+
+                            <TextView
+                                android:id="@+id/tvUserInfoUsername"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_toRightOf="@id/iv_user_info_user_avator"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                tools:text="名字" />
+
+                            <com.centling.widget.DrawableTextView
+                                android:id="@+id/tvUserInfoMemberLevel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tvUserInfoUsername"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_toRightOf="@id/iv_user_info_user_avator"
+                                android:drawableLeft="@drawable/ic_user_vip"
+                                android:drawablePadding="4dp"
+                                android:gravity="center"
+                                android:text="VIP"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                app:left_height="24dp"
+                                app:left_width="20dp" />
+
+                            <com.centling.widget.DrawableTextView
+                                android:id="@+id/tvUserInfoMemberNormal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tvUserInfoUsername"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_toRightOf="@id/iv_user_info_user_avator"
+                                android:gravity="center"
+                                android:text="普通会员"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                tools:visibility="gone" />
+
+                            <ImageView
+                                android:id="@+id/tv_user_info_get_score"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignTop="@+id/tvUserInfoMemberLevel"
+                                android:src="@drawable/iv_user_get_score"
+                                android:visibility="invisible" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <!--头像底部黑菜单-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_user_info_card_account"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/trans_grey1"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="礼品卡"
+                            android:textColor="@color/white1"
+                            android:textSize="15sp" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:id="@+id/tv_user_info_gold_account"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/trans_grey1"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="金币"
+                            android:textColor="@color/white1"
+                            android:textSize="15sp" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:id="@+id/tv_user_info_score"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/trans_grey1"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="积分兑换"
+                            android:textColor="@color/white1"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/grey3" />
+
+            <com.centling.widget.DrawableTextView
+                android:id="@+id/tv_user_info_all_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:drawableLeft="@drawable/ic_user_order"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="我的订单"
+                android:textColor="@color/text_default"
+                android:textSize="16sp"
+                app:left_height="32dp"
+                app:left_width="32dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_user_info_unpay_order_count"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightTop"
+                    app:badge_horizontalMargin="16dp"
+                    app:badge_verticalMargin="2dp">
+
+                    <com.centling.widget.DrawableTextView
+                        android:id="@+id/tv_user_info_unpay_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/ic_user_order_unpay"
+                        android:gravity="center"
+                        android:text="待付款"
+                        android:textColor="@color/text_default"
+                        android:textSize="12sp"
+                        app:top_height="18dp"
+                        app:top_width="16dp" />
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_user_info_unpost_order_count"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightTop"
+                    app:badge_horizontalMargin="16dp"
+                    app:badge_verticalMargin="2dp">
+
+                    <com.centling.widget.DrawableTextView
+                        android:id="@+id/tv_user_info_unpost_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/ic_user_order_unpost"
+                        android:gravity="center"
+                        android:text="待发货"
+                        android:textColor="@color/text_default"
+                        android:textSize="12sp"
+                        app:top_height="18dp"
+                        app:top_width="22dp" />
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_user_info_unreceive_order_count"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightTop"
+                    app:badge_horizontalMargin="16dp"
+                    app:badge_verticalMargin="2dp">
+
+                    <com.centling.widget.DrawableTextView
+                        android:id="@+id/tv_user_info_unreceive_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/ic_user_order_unreceive"
+                        android:gravity="center"
+                        android:text="待收货"
+                        android:textColor="@color/text_default"
+                        android:textSize="12sp"
+                        app:top_height="18dp"
+                        app:top_width="16dp" />
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_user_info_after_service_count"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightTop"
+                    app:badge_horizontalMargin="16dp"
+                    app:badge_verticalMargin="2dp">
+
+                    <com.centling.widget.DrawableTextView
+                        android:id="@+id/tv_user_info_after_service"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/ic_user_order_refund"
+                        android:gravity="center"
+                        android:text="退换货"
+                        android:textColor="@color/text_default"
+                        android:textSize="12sp"
+                        app:top_height="18dp"
+                        app:top_width="15dp" />
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/grey3" />
+
+            <com.centling.widget.DrawableTextView
+                android:id="@+id/tv_user_info_all_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:drawableLeft="@drawable/ic_user_collection"
+                android:drawablePadding="15dp"
+                android:gravity="center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="我的收藏"
+                android:textColor="@color/text_default"
+                android:textSize="16sp"
+                app:left_height="32dp"
+                app:left_width="32dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <com.centling.widget.DrawableTextView
+                    android:id="@+id/tv_user_info_goods_collection"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:drawablePadding="5dp"
+                    android:drawableTop="@drawable/ic_user_collection_goods"
+                    android:gravity="center"
+                    android:text="收藏的商品"
+                    android:textColor="@color/text_default"
+                    android:textSize="12sp"
+                    app:top_height="18dp"
+                    app:top_width="16dp" />
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/grey1" />
+
+                <com.centling.widget.DrawableTextView
+                    android:id="@+id/tv_user_info_customization"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:drawablePadding="5dp"
+                    android:drawableTop="@drawable/ic_user_collection_custom"
+                    android:gravity="center"
+                    android:text="我的定制"
+                    android:textColor="@color/text_default"
+                    android:textSize="12sp"
+                    app:top_height="18dp"
+                    app:top_width="18dp" />
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/grey1" />
+
+                <com.centling.widget.DrawableTextView
+                    android:id="@+id/tv_user_info_footprint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:drawablePadding="5dp"
+                    android:drawableTop="@drawable/ic_user_collectionfootprint"
+                    android:gravity="center"
+                    android:text="浏览足迹"
+                    android:textColor="@color/text_default"
+                    android:textSize="12sp"
+                    app:top_height="18dp"
+                    app:top_width="16dp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/grey3" />
+
+            <LinearLayout
+                android:id="@+id/ll_user_info_my_friends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <com.centling.widget.DrawableTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_user_friend"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:text="我的邀请"
+                    android:textColor="@color/text_default"
+                    android:textSize="16sp"
+                    app:left_height="32dp"
+                    app:left_width="32dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_user_info_customization_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <com.centling.widget.DrawableTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_user_measure"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:text="个人信息"
+                    android:textColor="@color/text_default"
+                    android:textSize="16sp"
+                    app:left_height="32dp"
+                    app:left_width="32dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_user_info_manage_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <com.centling.widget.DrawableTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_user_address"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:text="收货地址"
+                    android:textColor="@color/text_default"
+                    android:textSize="16sp"
+                    app:left_height="32dp"
+                    app:left_width="32dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_user_info_my_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <com.centling.widget.DrawableTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_user_message"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:text="我的消息"
+                    android:textColor="@color/text_default"
+                    android:textSize="16sp"
+                    app:left_height="32dp"
+                    app:left_width="32dp" />
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_user_info_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightCenter"
+                    app:badge_horizontalMargin="4dp">
+
+                    <TextView
+                        android:id="@+id/tv_user_info_my_msg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
+                        android:text="无未读消息" />
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.centling.widget.PullToZoomScrollView>
+</layout>

@@ -3,4 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="statusbar_view_height">0dp</dimen>
+    <dimen name="user_title_bar">50dp</dimen>
 </resources>

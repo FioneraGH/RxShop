@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.centling.widget.FlexibleImageView
+            android:id="@+id/iv_goods_preview"
+            android:layout_width="64dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:id="@+id/ll_goods_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/iv_goods_preview"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_goods_description"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="商品描述"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_toRightOf="@+id/iv_goods_preview"
+            android:layout_marginLeft="5dp"
+            android:layout_below="@+id/ll_goods_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_goods_spec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="蓝色蓝色蓝色"/>
+
+            <TextView
+                android:id="@+id/tv_goods_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:text="×1"
+                android:textColor="@color/grey1"
+                android:textSize="17sp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/grey1"/>
+
+</LinearLayout>

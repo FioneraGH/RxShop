@@ -4,7 +4,7 @@ package com.centling.http;
  * HttpConstants
  */
 
-interface HttpConstants {
+public interface HttpConstants {
     String IP = "http://www.honnyshop.com/mobile";
 
     String BASE_URL = IP + "/index.php/";
@@ -20,6 +20,8 @@ interface HttpConstants {
     String GOODS_DETAIL = "?act=goods&op=goods_detail_list&client=android";
 
     String GOODS_LIST = "?act=goods&op=goods_commonlist&client=android";
+
+    String ORDER_LIST = "?act=member_order&op=order_list&getpayment=true";
 
     String DISCOUNT_LIST = "?act=goods&op=goods_discount&client=android";
 
@@ -38,4 +40,30 @@ interface HttpConstants {
     String LOGIN = "?act=login&op=index";
 
     String BIND_THIRD_LOGIN = "?act=third_account&op=setting_third";
+
+    String FETCH_MEMBER_POINTS = "?act=member_points&op=points_login";
+
+    String TRACK_UNREAD_MSG = "?act=member_message&op=receivedSystemNewNum";
+
+    String IS_VIP = "?act=member_vip&op=is_vip";
+
+    String BACK_GOLD = "?act=member_order&op=order_pay_interrupt";
+
+    String ORDER_SIGN = "?act=payment_app&op=alipay_sign";
+
+    String CONFIRM_DLYP = "?act=dlyp_order&op=dlyp&client=android";
+
+    String ORDER_CANCEL = "?act=member_order&op=order_cancel";
+
+    String ORDER_DELETE = "?act=member_order&op=change_state";
+
+    String ORDER_REFUND = "?act=member_refund&op=add_refund_all";
+
+    String ORDER_RECEIVE = "?act=member_order&op=order_receive";
+
+    String ORDER_PREPAY = "?act=member_order&op=orderlist_prepay";
+
+    String ORDER_PAY_AGAIN = "?act=member_buy&op=order_pay_again";
+
+    String ORDER_SIGN_WX = "?act=payment_app&op=wx_sign_v3";
 }

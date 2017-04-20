@@ -19,6 +19,11 @@ public class ShowToast {
             return;
         }
 
+        if (info.toString().startsWith("java") || info.toString().startsWith("unexpect") || info
+                .toString().startsWith("syntax")) {
+            info = "参数错误";
+        }
+
         if (toast == null) {
             toast = Toast.makeText(BaseApplication.getInstance(), info.toString(),
                     Toast.LENGTH_SHORT);

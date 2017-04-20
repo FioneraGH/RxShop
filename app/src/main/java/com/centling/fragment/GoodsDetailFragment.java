@@ -22,6 +22,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.centling.R;
+import com.centling.activity.LoginActivity;
 import com.centling.adapter.GoodsDetailCommendedAdapter;
 import com.centling.databinding.FragmentGoodsDetailBinding;
 import com.centling.entity.GoodsDetailBean;
@@ -38,6 +39,8 @@ import com.centling.util.UserInfoUtil;
 import com.centling.widget.RadioGroupFlowLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
 
@@ -62,8 +65,6 @@ public class GoodsDetailFragment
 
     private void isGetBirthday() {
         Map<String, String> params = new HashMap<>();
-        params.put("key", UserInfoUtil.getKey());
-        params.put("client", "android");
         params.put("goods_id", selectGoodsId);
 
         ApiManager.getIsBirthDay(params).compose(bindLifecycle()).subscribe(empty -> {
@@ -312,12 +313,11 @@ public class GoodsDetailFragment
     }
 
     private void sendRequestToAddCart() {
-        if (TextUtils.isEmpty(UserInfoUtil.getKey())) {
-//            startActivity(new Intent(mContext, LoginActivity.class));
+        if (!UserInfoUtil.isLogin()) {
+            startActivity(new Intent(mContext, LoginActivity.class));
             return;
         }
         Map<String, String> params = new HashMap<>();
-        params.put("key", UserInfoUtil.getKey());
         params.put("goods_id", selectGoodsId);
         params.put("quantity", String.valueOf(buyNum));
 
@@ -329,8 +329,8 @@ public class GoodsDetailFragment
     }
 
     private void setGoodsFavorite(boolean isAdd) {
-        if (TextUtils.isEmpty(UserInfoUtil.getKey())) {
-//            startActivity(new Intent(mContext, LoginActivity.class));
+        if (!UserInfoUtil.isLogin()) {
+            startActivity(new Intent(mContext, LoginActivity.class));
             return;
         }
         // 0添加  1取消
@@ -342,7 +342,8 @@ public class GoodsDetailFragment
         params.put("goods_id", mGoodsDetailBean.getResult().getGoods_common_info().getFirst_goods_id());
         params.put("type", type);
         showLoading("正在" + ("0".equals(type) ? "添加" : "取消") + "收藏");
-        ApiManager.addToFavorite(params).compose(bindLifecycle()).subscribe(string -> {
+        ApiManager.addToFavorite(params).compose(bindUntil(
+                FragmentEvent.DESTROY_VIEW)).subscribe(string -> {
             dismissLoading();
             isFavorite = !isFavorite;
             mFragmentGoodsDetailBinding.ivGoodsDetailFavorite.setSelected(isFavorite);
@@ -365,7 +366,8 @@ public class GoodsDetailFragment
         String first_goods_id = intent.getStringExtra("goodsId");
         String key = UserInfoUtil.getKey();
 
-        ApiManager.getGoodsDetail(goodsCommonId, first_goods_id, key).compose(bindLifecycle()).subscribe(json -> {
+        ApiManager.getGoodsDetail(goodsCommonId, first_goods_id, key).compose(bindUntil(
+                FragmentEvent.DESTROY_VIEW)).subscribe(json -> {
             dismissLoading();
             isRequestFinish = true;
             mGoodsDetailBean = new Gson().fromJson(json, GoodsDetailBean.class);

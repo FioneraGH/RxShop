@@ -69,7 +69,7 @@ public class HomePageFragment
             if (TextUtils.isEmpty(UserInfoUtil.getKey())) {
                 startActivity(new Intent(mContext, LoginActivity.class));
             } else {
-                if (TextUtils.isEmpty(UserInfoUtil.getName())) {
+                if (!UserInfoUtil.isLogin()) {
 //                    startActivity(new Intent(mContext, VipActivity.class));
                 }
             }

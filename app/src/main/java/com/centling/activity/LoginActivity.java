@@ -19,6 +19,7 @@ import com.centling.util.MD5;
 import com.centling.util.SPUtil;
 import com.centling.util.ShowToast;
 import com.centling.util.UserInfoUtil;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -199,7 +200,8 @@ public class LoginActivity
         params.put("user_id", openId);
         params.put("type", type);
         params.put("client", "android");
-        ApiManager.isThirdLogin(params).compose(bindLifecycle()).subscribe(thirdLoginBean -> {
+        ApiManager.isThirdLogin(params).compose(bindUntil(
+                ActivityEvent.DESTROY)).subscribe(thirdLoginBean -> {
             mLoginBean = thirdLoginBean;
             Log.d("loren", "登录成功");
             saveLocalData();
@@ -230,7 +232,8 @@ public class LoginActivity
         Map<String,String> params = new HashMap<>();
         params.put("uname_mobile", mActivityLoginBinding.etLoginUsername.getText().toString());
         params.put("password", mActivityLoginBinding.etLoginPassword.getText().toString());
-        ApiManager.login(params).compose(bindLifecycle()).subscribe(loginBean -> {
+        ApiManager.login(params).compose(bindUntil(
+                ActivityEvent.DESTROY)).subscribe(loginBean -> {
             dismissLoading();
             mLoginBean = loginBean;
             Log.d("loren", "登录成功");
@@ -286,11 +289,9 @@ public class LoginActivity
     /*绑定请求*/
     private void bundleRequest() {
         Map<String,String> params = new HashMap<>();
-        params.put("key", UserInfoUtil.getKey());
         params.put("type", type);
         params.put("nick_name", nickName);
         params.put("user_id", openId);
-        params.put("client", "android");
         ApiManager.bindThirdLogin(params).subscribe(empty -> ShowToast.show("绑定成功"),
                 throwable -> L.d("绑定失败"));
     }
@@ -354,5 +355,15 @@ public class LoginActivity
         SPUtil.setBoolean("update_cart", true);
         EventBus.getDefault().post(new UserRelationEvent.UpdateAvatarEvent());
         EventBus.getDefault().post(new UserRelationEvent.UpdateNameEvent());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 }

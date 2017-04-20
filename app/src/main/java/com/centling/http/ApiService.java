@@ -8,6 +8,7 @@ import com.centling.entity.FriendBean;
 import com.centling.entity.GoodsDetailBean;
 import com.centling.entity.HomeBean;
 import com.centling.entity.LoginBean;
+import com.centling.entity.OrderBean;
 
 import java.util.Map;
 
@@ -36,6 +37,11 @@ public interface ApiService {
     Observable<BaseEntity<CatalogGoodsBean>> getCatalogGoodsList(@Query("gc_id") String gc_id,
                                                                  @Query("curpage") int curPage,
                                                                  @Query("page") int pageSize);
+
+    @POST(HttpConstants.ORDER_LIST)
+    Observable<BaseEntity<OrderBean>> getOrderList(@Query("curpage") int curPage,
+                                                   @Query("page") int pageSize,
+                                                   @Body Map<String, String> info);
 
     @GET(HttpConstants.GOODS_LIST)
     Observable<BaseEntity<CatalogGoodsBean>> getGoodsList(@Query(value = "keyword",encoded = true) String keyword,
@@ -81,4 +87,43 @@ public interface ApiService {
 
     @POST(HttpConstants.BIND_THIRD_LOGIN)
     Observable<BaseEntity<Empty>> bindThirdLogin(@Body Map<String, String> info);
+
+    @POST(HttpConstants.FETCH_MEMBER_POINTS)
+    Observable<ResponseBody> fetchMemberPoint(@Body Map<String, String> info);
+
+    @POST(HttpConstants.TRACK_UNREAD_MSG)
+    Observable<ResponseBody> trackUnreadMsg(@Body Map<String, String> info);
+
+    @POST(HttpConstants.IS_VIP)
+    Observable<ResponseBody> isVip(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_PREPAY)
+    Observable<ResponseBody> orderPrepay(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_PAY_AGAIN)
+    Observable<ResponseBody> orderPayAgain(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_SIGN_WX)
+    Observable<ResponseBody> orderSignWx(@Body Map<String, Object> info);
+
+    @POST(HttpConstants.BACK_GOLD)
+    Observable<BaseEntity<Empty>> backGold(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_SIGN)
+    Observable<ResponseBody> orderSign(@Body Map<String, String> info);
+
+    @POST(HttpConstants.CONFIRM_DLYP)
+    Observable<BaseEntity<Empty>> confirmDlyp(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_CANCEL)
+    Observable<BaseEntity<Empty>> orderCancel(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_DELETE)
+    Observable<BaseEntity<Empty>> orderDelete(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_REFUND)
+    Observable<BaseEntity<Empty>> orderRefund(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_RECEIVE)
+    Observable<BaseEntity<Empty>> orderReceive(@Body Map<String, String> info);
 }
