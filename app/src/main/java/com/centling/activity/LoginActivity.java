@@ -199,7 +199,7 @@ public class LoginActivity
         params.put("user_id", openId);
         params.put("type", type);
         params.put("client", "android");
-        ApiManager.isThirdLogin(params).subscribe(thirdLoginBean -> {
+        ApiManager.isThirdLogin(params).compose(bindLifecycle()).subscribe(thirdLoginBean -> {
             mLoginBean = thirdLoginBean;
             Log.d("loren", "登录成功");
             saveLocalData();
@@ -230,7 +230,7 @@ public class LoginActivity
         Map<String,String> params = new HashMap<>();
         params.put("uname_mobile", mActivityLoginBinding.etLoginUsername.getText().toString());
         params.put("password", mActivityLoginBinding.etLoginPassword.getText().toString());
-        ApiManager.login(params).subscribe(loginBean -> {
+        ApiManager.login(params).compose(bindLifecycle()).subscribe(loginBean -> {
             dismissLoading();
             mLoginBean = loginBean;
             Log.d("loren", "登录成功");
@@ -240,7 +240,11 @@ public class LoginActivity
             finish();
         },throwable -> {
             dismissLoading();
-            ShowToast.show(throwable.getMessage());
+            if (TextUtils.isEmpty(throwable.getMessage())) {
+                ShowToast.show("登录失败");
+            } else {
+                ShowToast.show(throwable.getMessage());
+            }
         });
     }
 
@@ -271,7 +275,11 @@ public class LoginActivity
             finish();
         },throwable -> {
             dismissLoading();
-            ShowToast.show(throwable.getMessage());
+            if (TextUtils.isEmpty(throwable.getMessage())) {
+                ShowToast.show("登录失败");
+            } else {
+                ShowToast.show(throwable.getMessage());
+            }
         });
     }
 

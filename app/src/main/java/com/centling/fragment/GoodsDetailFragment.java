@@ -66,7 +66,7 @@ public class GoodsDetailFragment
         params.put("client", "android");
         params.put("goods_id", selectGoodsId);
 
-        ApiManager.getIsBirthDay(params).subscribe(empty -> {
+        ApiManager.getIsBirthDay(params).compose(bindLifecycle()).subscribe(empty -> {
             if (UserInfoUtil.getVip().equals("1")) {
                 buy();
             } else {
@@ -321,7 +321,7 @@ public class GoodsDetailFragment
         params.put("goods_id", selectGoodsId);
         params.put("quantity", String.valueOf(buyNum));
 
-        ApiManager.addToCart(params).subscribe(empty -> {
+        ApiManager.addToCart(params).compose(bindLifecycle()).subscribe(empty -> {
             ShowToast.show("加入购物车成功");
             SPUtil.setBoolean("update_cart", true);
             EventBus.getDefault().post(new OrderRelationEvent.UpdateCart());
@@ -342,7 +342,7 @@ public class GoodsDetailFragment
         params.put("goods_id", mGoodsDetailBean.getResult().getGoods_common_info().getFirst_goods_id());
         params.put("type", type);
         showLoading("正在" + ("0".equals(type) ? "添加" : "取消") + "收藏");
-        ApiManager.addToFavorite(params).subscribe(string -> {
+        ApiManager.addToFavorite(params).compose(bindLifecycle()).subscribe(string -> {
             dismissLoading();
             isFavorite = !isFavorite;
             mFragmentGoodsDetailBinding.ivGoodsDetailFavorite.setSelected(isFavorite);
@@ -365,7 +365,7 @@ public class GoodsDetailFragment
         String first_goods_id = intent.getStringExtra("goodsId");
         String key = UserInfoUtil.getKey();
 
-        ApiManager.getGoodsDetail(goodsCommonId, first_goods_id, key).subscribe(json -> {
+        ApiManager.getGoodsDetail(goodsCommonId, first_goods_id, key).compose(bindLifecycle()).subscribe(json -> {
             dismissLoading();
             isRequestFinish = true;
             mGoodsDetailBean = new Gson().fromJson(json, GoodsDetailBean.class);
@@ -472,7 +472,7 @@ public class GoodsDetailFragment
     private void addFootPrint() {
         Map<String, String> params = new HashMap<>();
         params.put("goods_id", mGoodsDetailBean.getResult().getGoods_common_info().getFirst_goods_id());
-        ApiManager.addToFootprint(params).subscribe(empty -> {},throwable -> {});
+        ApiManager.addToFootprint(params).compose(bindLifecycle()).subscribe(empty -> {},throwable -> {});
     }
 
     private void setCommendedGoods() {

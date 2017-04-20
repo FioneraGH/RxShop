@@ -88,7 +88,7 @@ public class HomePageFragment
 //            startActivity(new Intent(mContext, CoolListActivity.class));
         });
 
-        ApiManager.getHomePage().subscribe(homeBean -> {
+        ApiManager.getHomePage().compose(bindLifecycle()).subscribe(homeBean -> {
             this.mHomeBean = homeBean;
             setHomePageData();
         }, throwable -> ShowToast.show("获取首页数据失败"));

@@ -71,7 +71,7 @@ public class CatalogGoodsFragment
     }
 
     private void getGoodsListByGcId(boolean isRefresh) {
-        ApiManager.getCatalogGoodsList(gc_id, curPage, 6).subscribe(catalogGoodsBean -> {
+        ApiManager.getCatalogGoodsList(gc_id, curPage, 6).compose(bindLifecycle()).subscribe(catalogGoodsBean -> {
             mFragmentCatalogGoodsBinding.ptrCatalogGoods.refreshComplete();
             if (isRefresh) {
                 goodsData.clear();

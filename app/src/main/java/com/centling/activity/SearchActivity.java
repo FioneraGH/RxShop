@@ -195,7 +195,7 @@ public class SearchActivity
         Map<String, String> params = new HashMap<>();
         params.put("key", UserInfoUtil.getKey());
         params.put("mobile", phone);
-        ApiManager.searchFriend(params).subscribe(friendBean -> {
+        ApiManager.searchFriend(params).compose(bindLifecycle()).subscribe(friendBean -> {
             dismissLoading();
             if (friendBean.getMemberlist().size() > 0) {
                 llFriend.setVisibility(View.VISIBLE);
@@ -256,7 +256,7 @@ public class SearchActivity
         Map<String, String> params = new HashMap<>();
         params.put("key", UserInfoUtil.getKey());
         params.put("mid", mid);
-        ApiManager.addFriend(params).subscribe(json -> {
+        ApiManager.addFriend(params).compose(bindLifecycle()).subscribe(json -> {
             dismissLoading();
             String followState;
             try {

@@ -47,7 +47,7 @@ public class CatalogSlideFragment
     }
 
     private void getCatalogList() {
-        ApiManager.getCatalogList().subscribe(catalogBean -> {
+        ApiManager.getCatalogList().compose(bindLifecycle()).subscribe(catalogBean -> {
             fragmentCatalogSlideBinding.tlCatalogList.setVisibility(View.VISIBLE);
             fragmentCatalogSlideBinding.vpCatalogGoods.setVisibility(View.VISIBLE);
             fragmentCatalogSlideBinding.tvCatalogGoodsRefresh.setVisibility(View.GONE);

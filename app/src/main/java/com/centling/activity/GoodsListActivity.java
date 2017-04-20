@@ -157,9 +157,9 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
 
     private void getGoodsList(boolean isRefresh) {
         Observable<CatalogGoodsBean> api = ApiManager.getGoodsList(keyword, curPage, 4,
-                season, orderKey, order);
+                season, orderKey, order).compose(bindLifecycle());
         if (getIntent().hasExtra("discount")) {
-            api = ApiManager.getDiscountList(curPage, 4);
+            api = ApiManager.getDiscountList(curPage, 4).compose(bindLifecycle());
         }
         api.subscribe(catalogGoodsBean -> {
             mActivityGoodsListBinding.srGoodsList.refreshComplete();
