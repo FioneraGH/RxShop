@@ -1,9 +1,9 @@
 package com.centling.http;
 
 import com.centling.entity.BaseEntity;
+import com.centling.entity.CartBean;
 import com.centling.entity.CatalogBean;
 import com.centling.entity.CatalogGoodsBean;
-import com.centling.entity.Empty;
 import com.centling.entity.FriendBean;
 import com.centling.entity.HomeBean;
 import com.centling.entity.LoginBean;
@@ -67,22 +67,22 @@ public class ApiManager {
                 first_goods_id, key).map(new NormalFilter()).compose(ApiManager.httpTransformer());
     }
 
-    public static Observable<Empty> getIsBirthDay(Map<String, String> info) {
+    public static Observable<Object> getIsBirthDay(Map<String, String> info) {
         return Api.getInstance().getApiService().getIsBirthDay(info).map(new CommonFilter<>())
                 .compose(ApiManager.httpTransformer());
     }
 
-    public static Observable<Empty> addToCart(Map<String, String> info) {
+    public static Observable<Object> addToCart(Map<String, String> info) {
         return Api.getInstance().getApiService().addToCart(info).map(new CommonFilter<>()).compose(
                 ApiManager.httpTransformer());
     }
 
-    public static Observable<Empty> addToFootprint(Map<String, String> info) {
+    public static Observable<Object> addToFootprint(Map<String, String> info) {
         return Api.getInstance().getApiService().addToFootprint(info).map(new CommonFilter<>())
                 .compose(ApiManager.httpTransformer());
     }
 
-    public static Observable<Empty> addToFavorite(Map<String, String> info) {
+    public static Observable<Object> addToFavorite(Map<String, String> info) {
         return Api.getInstance().getApiService().addToFavorite(info).map(new CommonFilter<>())
                 .compose(ApiManager.httpTransformer());
     }
@@ -92,32 +92,32 @@ public class ApiManager {
                 .compose(ApiManager.httpTransformer());
     }
 
-    public static Observable<Empty> backGold(Map<String, String> info) {
+    public static Observable<Object> backGold(Map<String, String> info) {
         return Api.getInstance().getApiService().backGold(info).map(new CommonFilter<>())
                 .compose(ApiManager.httpTransformer());
     }
 
-    public static Observable<Empty> confirmDlyp(Map<String, String> info) {
+    public static Observable<Object> confirmDlyp(Map<String, String> info) {
         return Api.getInstance().getApiService().confirmDlyp(info).map(new CommonFilter<>())
                 .compose(ApiManager.httpTransformer());
     }
 
-    public static Observable<Empty> orderCancel(Map<String, String> info) {
+    public static Observable<Object> orderCancel(Map<String, String> info) {
         return Api.getInstance().getApiService().orderCancel(info).map(new CommonFilter<>())
                 .compose(ApiManager.httpTransformer());
     }
 
-    public static Observable<Empty> orderDelete(Map<String, String> info) {
+    public static Observable<Object> orderDelete(Map<String, String> info) {
         return Api.getInstance().getApiService().orderDelete(info).map(new CommonFilter<>())
                 .compose(ApiManager.httpTransformer());
     }
 
-    public static Observable<Empty> orderRefund(Map<String, String> info) {
+    public static Observable<Object> orderRefund(Map<String, String> info) {
         return Api.getInstance().getApiService().orderRefund(info).map(new CommonFilter<>())
                 .compose(ApiManager.httpTransformer());
     }
 
-    public static Observable<Empty> orderReceive(Map<String, String> info) {
+    public static Observable<Object> orderReceive(Map<String, String> info) {
         return Api.getInstance().getApiService().orderReceive(info).map(new CommonFilter<>())
                 .compose(ApiManager.httpTransformer());
     }
@@ -142,7 +142,7 @@ public class ApiManager {
                 .compose(ApiManager.httpTransformer());
     }
 
-    public static Observable<Empty> bindThirdLogin(Map<String, String> info) {
+    public static Observable<Object> bindThirdLogin(Map<String, String> info) {
         return Api.getInstance().getApiService().bindThirdLogin(info).map(new CommonFilter<>())
                 .compose(ApiManager.httpTransformer());
     }
@@ -175,6 +175,21 @@ public class ApiManager {
     public static Observable<String> orderSignWx(Map<String, Object> info) {
         return Api.getInstance().getNoGsonApiService().orderSignWx(info).map(new NormalFilter())
                 .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<Object> normalCartUpdate(Map<String, String> info) {
+        return Api.getInstance().getApiService().normalCartUpdate(info).map(
+                new CommonFilter<>()).compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<Object> cartClear(Map<String, String> info) {
+        return Api.getInstance().getApiService().cartClear(info).map(
+                new CommonFilter<>()).compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<CartBean> cartList(Map<String, String> info) {
+        return Api.getInstance().getApiService().cartList(info).map(
+                new CommonFilter<>()).compose(ApiManager.httpTransformer());
     }
 
     private static class NormalFilter

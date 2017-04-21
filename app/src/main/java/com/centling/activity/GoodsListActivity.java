@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.BaseApplication;
 import com.centling.R;
 import com.centling.adapter.GoodsListAdapter;
@@ -188,7 +189,7 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.title_bar_right_icon : {
-                startActivity(new Intent(mContext, SearchActivity.class));
+                ARouter.getInstance().build("/main/search").navigation();
                 finish();
                 break;
             }

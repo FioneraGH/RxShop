@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
 import com.centling.databinding.ActivityLoginBinding;
 import com.centling.entity.LoginBean;
@@ -29,6 +31,7 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.HashMap;
 import java.util.Map;
 
+@Route(path = "/user/login")
 public class LoginActivity
         extends TitleBarActivity
         implements View.OnClickListener {
@@ -109,7 +112,7 @@ public class LoginActivity
 
     private void backFromThird() {
         finish();
-        startActivity(new Intent(mContext, LoginActivity.class));
+        ARouter.getInstance().build("/user/login").navigation();
     }
 
     private void initUmengListener() {

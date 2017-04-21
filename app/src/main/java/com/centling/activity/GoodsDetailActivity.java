@@ -1,12 +1,9 @@
 package com.centling.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.view.MenuItem;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
 import com.centling.fragment.GoodsDetailFragment;
 import com.centling.util.ActivityContainer;
@@ -26,11 +23,12 @@ public class GoodsDetailActivity
         mTitleBar.getToolbar().setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_goods_detail_cart:
-                    ShowToast.show("cart");
+                    ARouter.getInstance().build("/main/container").withString("fragment_type",
+                            "/main/cart").navigation();
                     break;
                 case R.id.menu_goods_detail_kf:
-                    if (TextUtils.isEmpty(UserInfoUtil.getName())) {
-                        startActivity(new Intent(mContext, LoginActivity.class));
+                    if (!UserInfoUtil.isLogin()) {
+                        ARouter.getInstance().build("/user/login").navigation();
                         return false;
                     }
                     if (UserInfoUtil.isKFOnline()) {

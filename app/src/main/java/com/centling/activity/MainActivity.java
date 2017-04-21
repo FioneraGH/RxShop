@@ -1,14 +1,16 @@
 package com.centling.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.centling.R;
 import com.centling.event.CommonEvent;
+import com.centling.fragment.CartFragment;
 import com.centling.fragment.CatalogSlideFragment;
 import com.centling.fragment.HomePageFragment;
 import com.centling.fragment.UserFragment;
@@ -29,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
+@Route(path = "/main/main")
 public class MainActivity
         extends BaseActivity {
     private final static int TIME_TO_EXIT = 2000;
@@ -36,7 +39,7 @@ public class MainActivity
     private List<Fragment> fragmentList = new ArrayList<>();
     private HomePageFragment homeFragment;
     private CatalogSlideFragment catalogFragment;
-    private HomePageFragment cartFragment;
+    private CartFragment cartFragment;
     private UserFragment userFragment;
 
     private BottomNavigationBar bottomNavigationBar;
@@ -52,7 +55,7 @@ public class MainActivity
 
         homeFragment = new HomePageFragment();
         catalogFragment = new CatalogSlideFragment();
-        cartFragment = new HomePageFragment();
+        cartFragment = new CartFragment();
         userFragment = new UserFragment();
 
         addFragment(homeFragment);
@@ -70,7 +73,7 @@ public class MainActivity
             public void onTabSelected(int i) {
                 if ((2 == i || 3 == i) && !UserInfoUtil.isLogin()) {
                     bottomNavigationBar.selectTab(prePos);
-                    startActivity(new Intent(mContext, LoginActivity.class));
+                    ARouter.getInstance().build("/user/login").navigation();
                     return;
                 }
                 showSelectedFragment(i);

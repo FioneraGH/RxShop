@@ -68,4 +68,10 @@ public interface HttpConstants {
     String ORDER_PAY_AGAIN = "?act=member_buy&op=order_pay_again";
 
     String ORDER_SIGN_WX = "?act=payment_app&op=wx_sign_v3";
+
+    String NORMAL_CART_UPDATE = "?act=member_cart&op=cart_edit_quantity";
+
+    String CART_CLEAR = "?act=member_cart&op=cart_clear";
+
+    String CART_LIST = "?act=member_cart&op=cart_list";
 }

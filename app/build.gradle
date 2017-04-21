@@ -32,7 +32,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [eventBusIndex: 'com.centling.perf.EventIndex']
+                arguments = [eventBusIndex: 'com.centling.perf.EventIndex', moduleName: project.getName()]
             }
         }
     }
@@ -123,9 +123,9 @@ dependencies {
     /* Bottom Navigation */
     compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
 
-    /* SmartGo */
-    compile 'com.github.VictorChow.SmartGo:smartgo-annotation:1.0.4'
-    annotationProcessor 'com.github.VictorChow.SmartGo:smartgo-compiler:1.0.4'
+    /* ARouter */
+    compile 'com.alibaba:arouter-api:1.2.1'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2'
     /* MultiDex */
     compile 'com.android.support:multidex:1.0.1'
 

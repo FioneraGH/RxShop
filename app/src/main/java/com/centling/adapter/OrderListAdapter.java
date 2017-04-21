@@ -111,7 +111,7 @@ public class OrderListAdapter
     }
 
     @Override
-    public void onBindViewHolder(final OrderHolder holder, int position) {
+    public void onBindViewHolder(OrderHolder holder, int position) {
 
         holder.btnConnectService.setVisibility(View.VISIBLE);
 //        holder.btnConnectService.setOnClickListener(v ->
@@ -131,16 +131,16 @@ public class OrderListAdapter
         holder.btnConfirmDlyp.setVisibility(View.GONE);
 
         holder.btnConfirmDlyp.setOnClickListener(v -> {
-            Log.d("loren", "order_id=" + data.get(holder.getAdapterPosition()).getOrder_list().get(0).getOrder_id());
+            Log.d("loren", "order_id=" + data.get(position).getOrder_list().get(0).getOrder_id());
             ShowDialog.showSelectDialog(context, "已自提", "您确定已经自提了吗？", "",
-                    v1 -> confirmDlyp(data.get(holder.getAdapterPosition()).getOrder_list().get(0).getOrder_id(), position));
+                    v1 -> confirmDlyp(data.get(position).getOrder_list().get(0).getOrder_id(), position));
         });
         switch (data.get(position).getOrder_list().get(0).getOrder_state()) {
             case "0":
                 holder.btnDeleteOrder.setVisibility(View.VISIBLE);
                 holder.btnDeleteOrder.setOnClickListener(v -> ShowDialog
                         .showSelectDialog(context, "删除订单", "您确定要删除订单吗？", "",
-                                v1 -> deleteOrder(holder.getAdapterPosition())));
+                                v1 -> deleteOrder(position)));
                 holder.tvOrderStatus
                         .setText(data.get(position).getOrder_list().get(0).getState_desc());
                 if (0 != data.get(position).getOrder_list().get(0).getRefund_sure_state()) {
@@ -153,10 +153,10 @@ public class OrderListAdapter
                 holder.btnCancelOrder.setVisibility(View.VISIBLE);
                 holder.btnCancelOrder.setOnClickListener(v -> ShowDialog
                         .showSelectDialog(context, "取消订单", "您确定要取消订单吗？", "",
-                                v1 -> cancelOrder(holder.getAdapterPosition())));
+                                v1 -> cancelOrder(position)));
                 holder.btnImmediatePay.setVisibility(View.VISIBLE);
                 holder.btnImmediatePay.setOnClickListener(v2 -> {
-                    currentPayPosition = holder.getAdapterPosition();
+                    currentPayPosition = position;
                     showPayPop(choosePayMethodPopup);
                 });
                 holder.tvOrderStatus
@@ -171,7 +171,7 @@ public class OrderListAdapter
                 holder.btnRefund.setVisibility(View.VISIBLE);
                 holder.btnRefund.setOnClickListener(v -> ShowDialog
                         .showEditDialog(context, "订单退款", "您确定要进行退款吗？",
-                                v1 -> refundOrder(holder.getAdapterPosition(), v1.getTag().toString())));
+                                v1 -> refundOrder(position, v1.getTag().toString())));
                 holder.tvOrderStatus
                         .setText(data.get(position).getOrder_list().get(0).getState_desc());
                 if (0 != data.get(position).getOrder_list().get(0).getRefund_sure_state()) {
@@ -184,13 +184,13 @@ public class OrderListAdapter
             case "30":
                 holder.btnCheckRefund.setVisibility(View.VISIBLE);
                 holder.btnCheckRefund.setOnClickListener(
-                        v -> checkLogistics(data.get(holder.getAdapterPosition()).getOrder_list().get(0).getOrder_id(),
-                                data.get(holder.getAdapterPosition()).getOrder_list().get(0)
+                        v -> checkLogistics(data.get(position).getOrder_list().get(0).getOrder_id(),
+                                data.get(position).getOrder_list().get(0)
                                         .getExtend_order_goods().get(0)
                                         .getGoods_image_url()));
                 holder.btnConfirmReceive.setOnClickListener(v -> ShowDialog
                         .showSelectDialog(context, "确认收货", "您确定要确认收货吗？", "（请确保您已接收到货物）",
-                                v1 -> receiveOrder(holder.getAdapterPosition())));
+                                v1 -> receiveOrder(position)));
                 Log.d("loren", "Lock_state=" + data.get(position).getOrder_list().get(0).getLock_state());
                 if (Integer.parseInt(data.get(position).getOrder_list().get(0).getLock_state()) > 0) {
                     holder.tvOrderStatus.setText(data.get(position).getOrder_list().get(0).getRefund_sure_msg());
@@ -202,8 +202,8 @@ public class OrderListAdapter
                 break;
             case "40":
                 holder.btnCheckRefund.setVisibility(View.VISIBLE);
-                holder.btnCheckRefund.setOnClickListener(v -> checkLogistics(data.get(holder.getAdapterPosition())
-                        .getOrder_list().get(0).getOrder_id(), data.get(holder.getAdapterPosition()).getOrder_list()
+                holder.btnCheckRefund.setOnClickListener(v -> checkLogistics(data.get(position)
+                        .getOrder_list().get(0).getOrder_id(), data.get(position).getOrder_list()
                         .get(0).getExtend_order_goods().get(0).getGoods_image_url()));
         }
 

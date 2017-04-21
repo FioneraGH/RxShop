@@ -7,6 +7,7 @@ import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.perf.EventIndex;
 import com.centling.util.CrashHandler;
 import com.centling.util.L;
@@ -67,7 +68,11 @@ public class BaseApplication
             Traceur.disableLogging();
         } else {
             Traceur.enableLogging();
+            ARouter.openLog();
+            ARouter.openDebug();
         }
+
+        ARouter.init(this);
 
         initUmeng();
     }

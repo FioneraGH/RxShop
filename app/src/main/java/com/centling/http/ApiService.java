@@ -1,11 +1,10 @@
 package com.centling.http;
 
 import com.centling.entity.BaseEntity;
+import com.centling.entity.CartBean;
 import com.centling.entity.CatalogBean;
 import com.centling.entity.CatalogGoodsBean;
-import com.centling.entity.Empty;
 import com.centling.entity.FriendBean;
-import com.centling.entity.GoodsDetailBean;
 import com.centling.entity.HomeBean;
 import com.centling.entity.LoginBean;
 import com.centling.entity.OrderBean;
@@ -13,14 +12,11 @@ import com.centling.entity.OrderBean;
 import java.util.Map;
 
 import io.reactivex.Observable;
-import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.http.Body;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
-import retrofit2.http.QueryName;
 
 /**
  * ApiService
@@ -62,16 +58,16 @@ public interface ApiService {
             @Query("key") String key);
 
     @POST(HttpConstants.IS_GET_BIRTHDAY)
-    Observable<BaseEntity<Empty>> getIsBirthDay(@Body Map<String, String> info);
+    Observable<BaseEntity<Object>> getIsBirthDay(@Body Map<String, String> info);
 
     @POST(HttpConstants.CART_ADD)
-    Observable<BaseEntity<Empty>> addToCart(@Body Map<String, String> info);
+    Observable<BaseEntity<Object>> addToCart(@Body Map<String, String> info);
 
     @POST(HttpConstants.FOOTPRINT_ADD)
-    Observable<BaseEntity<Empty>> addToFootprint(@Body Map<String, String> info);
+    Observable<BaseEntity<Object>> addToFootprint(@Body Map<String, String> info);
 
     @POST(HttpConstants.FAVORITE_ADD)
-    Observable<BaseEntity<Empty>> addToFavorite(@Body Map<String, String> info);
+    Observable<BaseEntity<Object>> addToFavorite(@Body Map<String, String> info);
 
     @POST(HttpConstants.ADD_FRIEND)
     Observable<ResponseBody> addFriend(@Body Map<String, String> info);
@@ -86,7 +82,7 @@ public interface ApiService {
     Observable<BaseEntity<LoginBean>> login(@Body Map<String, String> info);
 
     @POST(HttpConstants.BIND_THIRD_LOGIN)
-    Observable<BaseEntity<Empty>> bindThirdLogin(@Body Map<String, String> info);
+    Observable<BaseEntity<Object>> bindThirdLogin(@Body Map<String, String> info);
 
     @POST(HttpConstants.FETCH_MEMBER_POINTS)
     Observable<ResponseBody> fetchMemberPoint(@Body Map<String, String> info);
@@ -107,23 +103,32 @@ public interface ApiService {
     Observable<ResponseBody> orderSignWx(@Body Map<String, Object> info);
 
     @POST(HttpConstants.BACK_GOLD)
-    Observable<BaseEntity<Empty>> backGold(@Body Map<String, String> info);
+    Observable<BaseEntity<Object>> backGold(@Body Map<String, String> info);
 
     @POST(HttpConstants.ORDER_SIGN)
     Observable<ResponseBody> orderSign(@Body Map<String, String> info);
 
     @POST(HttpConstants.CONFIRM_DLYP)
-    Observable<BaseEntity<Empty>> confirmDlyp(@Body Map<String, String> info);
+    Observable<BaseEntity<Object>> confirmDlyp(@Body Map<String, String> info);
 
     @POST(HttpConstants.ORDER_CANCEL)
-    Observable<BaseEntity<Empty>> orderCancel(@Body Map<String, String> info);
+    Observable<BaseEntity<Object>> orderCancel(@Body Map<String, String> info);
 
     @POST(HttpConstants.ORDER_DELETE)
-    Observable<BaseEntity<Empty>> orderDelete(@Body Map<String, String> info);
+    Observable<BaseEntity<Object>> orderDelete(@Body Map<String, String> info);
 
     @POST(HttpConstants.ORDER_REFUND)
-    Observable<BaseEntity<Empty>> orderRefund(@Body Map<String, String> info);
+    Observable<BaseEntity<Object>> orderRefund(@Body Map<String, String> info);
 
     @POST(HttpConstants.ORDER_RECEIVE)
-    Observable<BaseEntity<Empty>> orderReceive(@Body Map<String, String> info);
+    Observable<BaseEntity<Object>> orderReceive(@Body Map<String, String> info);
+
+    @POST(HttpConstants.NORMAL_CART_UPDATE)
+    Observable<BaseEntity<Object>> normalCartUpdate(@Body Map<String, String> info);
+
+    @POST(HttpConstants.CART_CLEAR)
+    Observable<BaseEntity<Object>> cartClear(@Body Map<String, String> info);
+
+    @POST(HttpConstants.CART_LIST)
+    Observable<BaseEntity<CartBean>> cartList(@Body Map<String, String> info);
 }

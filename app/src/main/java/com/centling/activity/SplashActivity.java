@@ -1,10 +1,10 @@
 package com.centling.activity;
 
 import android.Manifest;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
 import com.centling.util.ShowToast;
 import com.jaeger.library.StatusBarUtil;
@@ -41,7 +41,7 @@ public class SplashActivity
     }
 
     private void tryToAuth() {
-        startActivity(new Intent(mContext, MainActivity.class));
+        ARouter.getInstance().build("/main/main").navigation();
         finish();
     }
 

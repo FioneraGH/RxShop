@@ -69,6 +69,9 @@
         <activity
             android:name="com.centling.activity.OrderActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.centling.activity.FragmentContainerActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
@@ -21,8 +19,8 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
-import com.centling.activity.LoginActivity;
 import com.centling.adapter.GoodsDetailCommendedAdapter;
 import com.centling.databinding.FragmentGoodsDetailBinding;
 import com.centling.entity.GoodsDetailBean;
@@ -40,7 +38,6 @@ import com.centling.util.UserInfoUtil;
 import com.centling.widget.RadioGroupFlowLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
@@ -83,8 +80,8 @@ public class GoodsDetailFragment
     }
 
     private void buy() {
-        if (TextUtils.isEmpty(UserInfoUtil.getName())) {
-//            startActivity(new Intent(mContext, LoginActivity.class));
+        if (!UserInfoUtil.isLogin()) {
+            ARouter.getInstance().build("/user/login").navigation();
             return;
         }
         if (buyNum > selectStorage) {
@@ -202,12 +199,8 @@ public class GoodsDetailFragment
                             .withTargetUrl(sharedUrl).withMedia(image).share();
                     break;
                 case R.id.sina_rl:
-                    //Sina图片大小尺寸格式均有限制-32k
-                    //                    UMImage imageSina = new UMImage(mActivity,
-                    // BitmapFactory.decodeResource(getResources(), R.drawable.shared_sina));
                     new ShareAction(mActivity).setPlatform(SHARE_MEDIA.SINA)
                             .setCallback(umShareListener).withText(sharedStr + sharedUrl)
-                            //                            .withTargetUrl(sharedUrl)
                             .withMedia(image).share();
                     break;
                 case R.id.qzone_rl:
@@ -380,7 +373,7 @@ public class GoodsDetailFragment
 
     private void sendRequestToAddCart() {
         if (!UserInfoUtil.isLogin()) {
-            startActivity(new Intent(mContext, LoginActivity.class));
+            ARouter.getInstance().build("/user/login").navigation();
             return;
         }
         Map<String, String> params = new HashMap<>();
@@ -391,12 +384,12 @@ public class GoodsDetailFragment
             ShowToast.show("加入购物车成功");
             SPUtil.setBoolean("update_cart", true);
             EventBus.getDefault().post(new OrderRelationEvent.UpdateCart());
-        }, throwable -> ShowToast.show("添加购物车失败"));
+        }, throwable -> ShowToast.show(throwable.getMessage()));
     }
 
     private void setGoodsFavorite(boolean isAdd) {
         if (!UserInfoUtil.isLogin()) {
-            startActivity(new Intent(mContext, LoginActivity.class));
+            ARouter.getInstance().build("/user/login").navigation();
             return;
         }
         // 0添加  1取消
@@ -482,7 +475,7 @@ public class GoodsDetailFragment
                 DisplayUtil.setTextViewDeleteLine(
                         mFragmentGoodsDetailBinding.tvGoodsDetailPreviousPrice);
                 mFragmentGoodsDetailBinding.tvGoodsDetailDiscount.setText(
-                        String.format(Locale.CHINA, "%s折", Float.parseFloat(
+                        String.format(Locale.CHINA, "%1.1f折", Float.parseFloat(
                                 mGoodsDetailBean.getResult().getGoods_common_info().getGoods_discount()) / 10));
                 mFragmentGoodsDetailBinding.tvGoodsDetailPreviousPrice.setVisibility(View.VISIBLE);
                 mFragmentGoodsDetailBinding.tvGoodsDetailDiscount.setVisibility(View.VISIBLE);

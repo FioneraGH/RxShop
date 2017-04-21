@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
 import com.centling.mvp.BindHelper;
 import com.centling.widget.ProcessDialog;
@@ -50,6 +51,8 @@ public abstract class BaseActivity
         mContext = this;
         isDestroy = false;
         mProcessDialog = new ProcessDialog(this);
+
+        ARouter.getInstance().inject(this);
     }
 
     private void initSwipeBackFinish() {

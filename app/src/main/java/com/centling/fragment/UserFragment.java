@@ -10,13 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.centling.R;
-import com.centling.activity.LoginActivity;
-import com.centling.activity.OrderActivity;
 import com.centling.databinding.FragmentUserinfoBinding;
 import com.centling.event.UserRelationEvent;
 import com.centling.http.ApiManager;
@@ -190,20 +189,19 @@ public class UserFragment
 
     @Override
     public void onClick(View v) {
-        if (TextUtils.isEmpty(UserInfoUtil.getKey())) {
-            startActivity(new Intent(mContext, LoginActivity.class));
+        if (!UserInfoUtil.isLogin()) {
+            ARouter.getInstance().build("/user/login").navigation();
             return;
         }
-        onUserClick(v);
-        onOrderClick(v);
-        onCollectionClick(v);
-        onMiscClick(v);
+        if (!onUserClick(v) && !onOrderClick(v) && !onCollectionClick(v)) {
+            onMiscClick(v);
+        }
     }
 
     /**
      * 用户信息
      */
-    void onUserClick(View v) {
+    boolean onUserClick(View v) {
         switch (v.getId()) {
             case R.id.iv_user_info_setting:
 //                commonIntent.setClass(mContext, SettingsActivity.class);
@@ -232,67 +230,55 @@ public class UserFragment
                 startActivity(commonIntent);
                 break;
         }
+        return false;
     }
 
     /**
      * 订单跳转
      */
-    void onOrderClick(View v) {
+    boolean onOrderClick(View v) {
+        int order_type = -1;
         switch (v.getId()) {
             case R.id.tv_user_info_all_order:
-                commonIntent.setClass(mContext, OrderActivity.class);
-                commonIntent.putExtra("order_type", 0);
-                startActivity(commonIntent);
+                order_type = 0;
                 break;
             case R.id.tv_user_info_unpay_order:
-                commonIntent.setClass(mContext, OrderActivity.class);
-                commonIntent.putExtra("order_type", 1);
-                startActivity(commonIntent);
+                order_type = 1;
                 break;
             case R.id.tv_user_info_unpost_order:
-                commonIntent.setClass(mContext, OrderActivity.class);
-                commonIntent.putExtra("order_type", 2);
-                startActivity(commonIntent);
+                order_type = 2;
                 break;
             case R.id.tv_user_info_unreceive_order:
-                commonIntent.setClass(mContext, OrderActivity.class);
-                commonIntent.putExtra("order_type", 3);
-                startActivity(commonIntent);
+                order_type = 3;
                 break;
             case R.id.tv_user_info_after_service:
-                commonIntent.setClass(mContext, OrderActivity.class);
-                commonIntent.putExtra("order_type", 4);
-                startActivity(commonIntent);
+                order_type = 4;
                 break;
         }
+        ARouter.getInstance().build("/order/main").withInt("order_type", order_type).navigation();
+        return order_type != -1;
     }
 
     /**
      * 收藏跳转
      */
-    void onCollectionClick(View v) {
+    boolean onCollectionClick(View v) {
+        int collection_type = -1;
         switch (v.getId()) {
             case R.id.tv_user_info_all_collection:
-//                commonIntent.setClass(mContext, CollectionActivity.class);
-                commonIntent.putExtra("collection_type", 0);
-                startActivity(commonIntent);
-                break;
             case R.id.tv_user_info_goods_collection:
-//                commonIntent.setClass(mContext, CollectionActivity.class);
-                commonIntent.putExtra("collection_type", 0);
-                startActivity(commonIntent);
+                collection_type = 0;
                 break;
             case R.id.tv_user_info_customization:
-//                commonIntent.setClass(mContext, CollectionActivity.class);
-                commonIntent.putExtra("collection_type", 1);
-                startActivity(commonIntent);
+                collection_type = 1;
                 break;
             case R.id.tv_user_info_footprint:
-//                commonIntent.setClass(mContext, CollectionActivity.class);
-                commonIntent.putExtra("collection_type", 2);
-                startActivity(commonIntent);
+                collection_type = 2;
                 break;
         }
+        ARouter.getInstance().build("/collection/main").withInt("collection_type", collection_type)
+                .navigation();
+        return collection_type != -1;
     }
 
     /**

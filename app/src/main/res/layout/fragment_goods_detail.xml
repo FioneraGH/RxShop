@@ -311,14 +311,14 @@
 
             <ImageView
                 android:id="@+id/iv_goods_detail_buy"
-                android:layout_width="48dp"
+                android:layout_width="45dp"
                 android:layout_height="50dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_goods_detail_buy" />
 
             <ImageView
                 android:id="@+id/iv_goods_detail_cart"
-                android:layout_width="48dp"
+                android:layout_width="45dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="1dp"
                 android:scaleType="fitXY"
@@ -326,7 +326,7 @@
 
             <ImageView
                 android:id="@+id/iv_goods_detail_favorite"
-                android:layout_width="48dp"
+                android:layout_width="45dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="1dp"
                 android:scaleType="fitXY"
@@ -334,7 +334,7 @@
 
             <ImageView
                 android:id="@+id/iv_goods_detail_share"
-                android:layout_width="48dp"
+                android:layout_width="45dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="1dp"
                 android:scaleType="fitXY"

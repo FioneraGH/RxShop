@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.centling.R;
 import com.centling.adapter.CatalogGoodsListAdapter;
 import com.centling.databinding.FragmentCatalogGoodsBinding;

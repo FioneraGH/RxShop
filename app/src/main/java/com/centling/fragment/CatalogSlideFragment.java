@@ -1,6 +1,5 @@
 package com.centling.fragment;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,8 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
-import com.centling.activity.SearchActivity;
 import com.centling.adapter.CatalogFragmentAdapter;
 import com.centling.databinding.FragmentCatalogSlideBinding;
 import com.centling.http.ApiManager;
@@ -39,9 +38,8 @@ public class CatalogSlideFragment
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fragmentCatalogSlideBinding.ivCatalogSlideSearch.setOnClickListener(v -> {
-            startActivity(new Intent(mContext, SearchActivity.class));
-        });
+        fragmentCatalogSlideBinding.ivCatalogSlideSearch.setOnClickListener(
+                v -> ARouter.getInstance().build("/main/search").navigation());
         fragmentCatalogSlideBinding.tvCatalogGoodsRefresh.setOnClickListener(v -> getCatalogList());
         getCatalogList();
     }

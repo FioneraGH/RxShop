@@ -5,11 +5,17 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.centling.R;
 import com.centling.adapter.OrderFragmentAdapter;
 
+@Route(path = "/order/main")
 public class OrderActivity
         extends TitleBarActivity {
+
+    @Autowired
+    int order_type;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,6 @@ public class OrderActivity
         }
 
         vpOrderContainer.setOffscreenPageLimit(1);
-        vpOrderContainer.setCurrentItem(getIntent().getIntExtra("order_type", 0));
+        vpOrderContainer.setCurrentItem(order_type);
     }
 }

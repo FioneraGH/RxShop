@@ -64,7 +64,7 @@ public class GoodsListAdapter
         } else {
             holder.tvGoodsDiscount.setVisibility(View.VISIBLE);
             holder.tvGoodsPreviousPrice.setVisibility(View.VISIBLE);
-            holder.tvGoodsDiscount.setText(String.format(Locale.CHINA, "%f折",
+            holder.tvGoodsDiscount.setText(String.format(Locale.CHINA, "%1.1f折",
                     Float.valueOf(goodsCommonList.get(position).getGoods_discount()) / 10));
         }
         ImageUtil.loadImage(goodsCommonList.get(position).getGoods_image_url(), holder.ivGoodsItem,

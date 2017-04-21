@@ -14,13 +14,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.centling.R;
 import com.centling.entity.FriendBean;
 import com.centling.http.ApiManager;
 import com.centling.util.ImageUtil;
 import com.centling.util.SPUtil;
 import com.centling.util.ShowToast;
-import com.centling.util.UserInfoUtil;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import org.json.JSONException;
@@ -33,6 +33,7 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+@Route(path = "/main/search")
 public class SearchActivity
         extends TitleBarActivity
         implements View.OnClickListener {

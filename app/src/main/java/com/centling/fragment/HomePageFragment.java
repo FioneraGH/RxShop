@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
 import com.centling.activity.GoodsDetailActivity;
 import com.centling.activity.GoodsListActivity;
-import com.centling.activity.LoginActivity;
 import com.centling.databinding.FragmentHomePageBinding;
 import com.centling.entity.HomeBean;
 import com.centling.http.ApiManager;
@@ -66,7 +66,7 @@ public class HomePageFragment
 
         mFragmentHomePageBinding.ivHomeVip.setOnClickListener(v -> {
             if (TextUtils.isEmpty(UserInfoUtil.getKey())) {
-                startActivity(new Intent(mContext, LoginActivity.class));
+                ARouter.getInstance().build("/user/login").navigation();
             } else {
                 if (!UserInfoUtil.isLogin()) {
 //                    startActivity(new Intent(mContext, VipActivity.class));
@@ -77,8 +77,8 @@ public class HomePageFragment
 //            startActivity(new Intent(mContext, BrandActivity.class));
         });
         mFragmentHomePageBinding.ivHomeCustom.setOnClickListener(v -> {
-            if (TextUtils.isEmpty(UserInfoUtil.getName())) {
-                startActivity(new Intent(mContext, LoginActivity.class));
+            if (!UserInfoUtil.isLogin()) {
+                ARouter.getInstance().build("/user/login").navigation();
             } else {
 //                startActivity(new Intent(mContext, CustomizationActivity.class));
             }
@@ -90,21 +90,17 @@ public class HomePageFragment
         loadHomePage();
     }
 
-    private boolean isLoading;
+    private boolean isFailed = true;
 
     public void loadHomePage() {
-        if (isLoading) {
+        if (!isFailed) {
             return;
         }
-        isLoading = true;
         ApiManager.getHomePage().compose(bindLifecycle()).subscribe(homeBean -> {
             this.mHomeBean = homeBean;
-            isLoading = false;
+            isFailed = false;
             setHomePageData();
-        }, throwable -> {
-            isLoading = false;
-            ShowToast.show("获取首页数据失败，点击底部重试");
-        });
+        }, throwable -> ShowToast.show("获取首页数据失败，点击底部重试"));
     }
 
     private void setHomePageData() {
@@ -115,11 +111,11 @@ public class HomePageFragment
         mFragmentHomePageBinding.bannerHome.update(bannerUrl);
 
         ImageUtil.loadImage(mHomeBean.getGoodsRecommend().get(0).getImage(),
-                mFragmentHomePageBinding.ivHomeRecommended1);
+                mFragmentHomePageBinding.ivHomeRecommended1, R.drawable.iv_place_holder_1);
         ImageUtil.loadImage(mHomeBean.getGoodsRecommend().get(1).getImage(),
-                mFragmentHomePageBinding.ivHomeRecommended2);
+                mFragmentHomePageBinding.ivHomeRecommended2, R.drawable.iv_place_holder_1);
         ImageUtil.loadImage(mHomeBean.getGoodsDiscount().get(0).getImage(),
-                mFragmentHomePageBinding.ivHomeRecommended3);
+                mFragmentHomePageBinding.ivHomeRecommended3, R.drawable.iv_place_holder_1);
 
         mFragmentHomePageBinding.ivHomeRecommended1.setOnClickListener(
                 v -> clickBanner(mHomeBean.getGoodsRecommend().get(0).getType(),
