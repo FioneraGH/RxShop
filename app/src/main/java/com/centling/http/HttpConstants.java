@@ -9,6 +9,8 @@ public interface HttpConstants {
 
     String BASE_URL = IP + "/index.php/";
 
+    String GOODS_SHARED_URL = "http://www.honnyshop.com/wap/tmpl/share_product.html?goods_id=";
+
     String HOME_PAGE = "?act=index&op=special&special_id=1&type=app&client=android";
 
     String CATALOG_LIST = "?act=goods_class&client=android";

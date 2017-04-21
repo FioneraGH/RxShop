@@ -28,6 +28,7 @@ import com.centling.databinding.FragmentGoodsDetailBinding;
 import com.centling.entity.GoodsDetailBean;
 import com.centling.event.OrderRelationEvent;
 import com.centling.http.ApiManager;
+import com.centling.http.HttpConstants;
 import com.centling.popupwindow.SharedPopupWindow;
 import com.centling.util.DisplayUtil;
 import com.centling.util.ImageUtil;
@@ -41,6 +42,10 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
 
@@ -175,6 +180,68 @@ public class GoodsDetailFragment
     private FragmentGoodsDetailBinding mFragmentGoodsDetailBinding;
     private GoodsDetailBean mGoodsDetailBean;
 
+    /**
+     * 分享-弹出框监听内部类
+     */
+    View.OnClickListener itemsSharedOnClickReview = new View.OnClickListener() {
+
+        public void onClick(View v) {
+            UMImage image = new UMImage(mActivity, share_pic);
+            String sharedUrl = HttpConstants.GOODS_SHARED_URL + selectGoodsId;
+            //恒尼内衣APP是一款为您提供高端商务定制内衣的电商平台。
+            String sharedStr = sharedName;
+            switch (v.getId()) {
+                case R.id.weixin_rl:
+                    new ShareAction(mActivity).setPlatform(SHARE_MEDIA.WEIXIN)
+                            .setCallback(umShareListener).withText(sharedStr).withMedia(image)
+                            .withTitle("恒尼内衣").withTargetUrl(sharedUrl).share();
+                    break;
+                case R.id.friend_rl:
+                    new ShareAction(mActivity).setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE)
+                            .setCallback(umShareListener).withText(sharedStr).withTitle(sharedStr)
+                            .withTargetUrl(sharedUrl).withMedia(image).share();
+                    break;
+                case R.id.sina_rl:
+                    //Sina图片大小尺寸格式均有限制-32k
+                    //                    UMImage imageSina = new UMImage(mActivity,
+                    // BitmapFactory.decodeResource(getResources(), R.drawable.shared_sina));
+                    new ShareAction(mActivity).setPlatform(SHARE_MEDIA.SINA)
+                            .setCallback(umShareListener).withText(sharedStr + sharedUrl)
+                            //                            .withTargetUrl(sharedUrl)
+                            .withMedia(image).share();
+                    break;
+                case R.id.qzone_rl:
+                    new ShareAction(mActivity).setPlatform(SHARE_MEDIA.QZONE)
+                            .setCallback(umShareListener).withText(sharedStr)//必填且不为空
+                            .withMedia(image)//必填且不为空
+                            .withTargetUrl(sharedUrl).withTitle("恒尼内衣").share();
+                    break;
+                case R.id.qq_rl:
+                    new ShareAction(mActivity).setPlatform(SHARE_MEDIA.QQ)
+                            .setCallback(umShareListener).withText(sharedStr).withMedia(image)
+                            .withTitle("恒尼内衣").withTargetUrl(sharedUrl).share();
+                    break;
+            }
+        }
+
+    };
+
+    private UMShareListener umShareListener = new UMShareListener() {
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            ShowToast. show(" 分享成功");
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            ShowToast.show(" 分享失败");
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+        }
+    };
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -294,8 +361,7 @@ public class GoodsDetailFragment
             if (!isRequestFinish) {
                 return;
             }
-            new SharedPopupWindow(mContext, v1 -> {
-            }).showAtLocation(mFragmentGoodsDetailBinding.popParentRl, Gravity.BOTTOM, 0, 0);
+            new SharedPopupWindow(mContext, itemsSharedOnClickReview).showAtLocation(mFragmentGoodsDetailBinding.popParentRl, Gravity.BOTTOM, 0, 0);
         });
     }
 

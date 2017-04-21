@@ -27,7 +27,6 @@ import com.youth.banner.loader.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class HomePageFragment
         extends BaseFragment {
     private HomeBean mHomeBean;
@@ -88,10 +87,24 @@ public class HomePageFragment
 //            startActivity(new Intent(mContext, CoolListActivity.class));
         });
 
+        loadHomePage();
+    }
+
+    private boolean isLoading;
+
+    public void loadHomePage() {
+        if (isLoading) {
+            return;
+        }
+        isLoading = true;
         ApiManager.getHomePage().compose(bindLifecycle()).subscribe(homeBean -> {
             this.mHomeBean = homeBean;
+            isLoading = false;
             setHomePageData();
-        }, throwable -> ShowToast.show("获取首页数据失败"));
+        }, throwable -> {
+            isLoading = false;
+            ShowToast.show("获取首页数据失败，点击底部重试");
+        });
     }
 
     private void setHomePageData() {

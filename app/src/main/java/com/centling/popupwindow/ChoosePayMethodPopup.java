@@ -24,9 +24,11 @@ import com.centling.databinding.PopBuyLayoutBinding;
 import java.text.DecimalFormat;
 import java.util.Locale;
 
-public class ChoosePayMethodPopup extends PopupWindow implements View.OnClickListener {
-    private static final int ALIPAY=0;
-    private static final int WXPAY=1;
+public class ChoosePayMethodPopup
+        extends PopupWindow
+        implements View.OnClickListener {
+    private static final int ALIPAY = 0;
+    private static final int WXPAY = 1;
 
     private ValueAnimator alphaAnimator;
     private PopBuyLayoutBinding mPopView;
@@ -36,8 +38,10 @@ public class ChoosePayMethodPopup extends PopupWindow implements View.OnClickLis
     private ChoosePayMethodPopup.OnDialogListener listener;
     private Window window;
 
-    public ChoosePayMethodPopup(Context context,@NonNull ChoosePayMethodPopup.OnDialogListener listener){
-
+    public ChoosePayMethodPopup(Context context,
+                                @NonNull ChoosePayMethodPopup.OnDialogListener listener) {
+        super(context);
+        this.listener = listener;
         mPopView = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.pop_buy_layout,
                 null, false);
         setContentView(mPopView.getRoot());
@@ -53,18 +57,18 @@ public class ChoosePayMethodPopup extends PopupWindow implements View.OnClickLis
         mPopView.tvPaymentPay.setOnClickListener(this);
         mPopView.llPaymentChoice.setOnItemClick(pos -> method = pos);
 
-        window = ((BaseActivity)context).getWindow();
+        window = ((BaseActivity) context).getWindow();
         WindowManager.LayoutParams params = window.getAttributes();
         alphaAnimator = new ValueAnimator();
         alphaAnimator.setDuration(250);
         alphaAnimator.addUpdateListener(animation -> {
-            params.alpha = (float)animation.getAnimatedValue();
+            params.alpha = (float) animation.getAnimatedValue();
             window.setAttributes(params);
         });
         update();
     }
 
-    private float mPrice  = 0.0f;
+    private float mPrice = 0.0f;
 
     public ChoosePayMethodPopup setData(float price, Float totalGold) {
         this.mPrice = price;
@@ -141,7 +145,8 @@ public class ChoosePayMethodPopup extends PopupWindow implements View.OnClickLis
 
                 }
             });
-        } return this;
+        }
+        return this;
     }
 
 
@@ -152,7 +157,8 @@ public class ChoosePayMethodPopup extends PopupWindow implements View.OnClickLis
         void onChoosePhoto(float gold); // 微信
     }
 
-    @Override public void onClick(View v) {
+    @Override
+    public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_payment_close:
                 dismiss();

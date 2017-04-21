@@ -69,6 +69,7 @@ public class MainActivity
             @Override
             public void onTabSelected(int i) {
                 if ((2 == i || 3 == i) && !UserInfoUtil.isLogin()) {
+                    bottomNavigationBar.selectTab(prePos);
                     startActivity(new Intent(mContext, LoginActivity.class));
                     return;
                 }
@@ -82,7 +83,9 @@ public class MainActivity
 
             @Override
             public void onTabReselected(int i) {
-
+                if (0 == i) {
+                    homeFragment.loadHomePage();
+                }
             }
         });
 
