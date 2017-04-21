@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
+import com.centling.constant.RouterConstant;
 import com.centling.fragment.GoodsDetailFragment;
 import com.centling.util.ActivityContainer;
 import com.centling.util.ShowToast;
@@ -24,11 +25,11 @@ public class GoodsDetailActivity
             switch (item.getItemId()) {
                 case R.id.menu_goods_detail_cart:
                     ARouter.getInstance().build("/main/container").withString("fragment_type",
-                            "/main/cart").navigation();
+                            RouterConstant.Main.CART).navigation();
                     break;
                 case R.id.menu_goods_detail_kf:
                     if (!UserInfoUtil.isLogin()) {
-                        ARouter.getInstance().build("/user/login").navigation();
+                        ARouter.getInstance().build(RouterConstant.User.LOGIN).navigation();
                         return false;
                     }
                     if (UserInfoUtil.isKFOnline()) {

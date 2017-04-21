@@ -16,6 +16,7 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.centling.R;
+import com.centling.constant.RouterConstant;
 import com.centling.databinding.FragmentUserinfoBinding;
 import com.centling.event.UserRelationEvent;
 import com.centling.http.ApiManager;
@@ -190,7 +191,7 @@ public class UserFragment
     @Override
     public void onClick(View v) {
         if (!UserInfoUtil.isLogin()) {
-            ARouter.getInstance().build("/user/login").navigation();
+            ARouter.getInstance().build(RouterConstant.User.LOGIN).navigation();
             return;
         }
         if (!onUserClick(v) && !onOrderClick(v) && !onCollectionClick(v)) {
@@ -255,7 +256,7 @@ public class UserFragment
                 order_type = 4;
                 break;
         }
-        ARouter.getInstance().build("/order/main").withInt("order_type", order_type).navigation();
+        ARouter.getInstance().build(RouterConstant.Order.MAIN).withInt("order_type", order_type).navigation();
         return order_type != -1;
     }
 
@@ -276,7 +277,7 @@ public class UserFragment
                 collection_type = 2;
                 break;
         }
-        ARouter.getInstance().build("/collection/main").withInt("collection_type", collection_type)
+        ARouter.getInstance().build(RouterConstant.Collection.MAIN).withInt("collection_type", collection_type)
                 .navigation();
         return collection_type != -1;
     }

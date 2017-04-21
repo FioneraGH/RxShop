@@ -15,6 +15,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
 import com.centling.activity.GoodsDetailActivity;
 import com.centling.activity.GoodsListActivity;
+import com.centling.constant.RouterConstant;
 import com.centling.databinding.FragmentHomePageBinding;
 import com.centling.entity.HomeBean;
 import com.centling.http.ApiManager;
@@ -66,7 +67,7 @@ public class HomePageFragment
 
         mFragmentHomePageBinding.ivHomeVip.setOnClickListener(v -> {
             if (TextUtils.isEmpty(UserInfoUtil.getKey())) {
-                ARouter.getInstance().build("/user/login").navigation();
+                ARouter.getInstance().build(RouterConstant.User.LOGIN).navigation();
             } else {
                 if (!UserInfoUtil.isLogin()) {
 //                    startActivity(new Intent(mContext, VipActivity.class));
@@ -78,7 +79,7 @@ public class HomePageFragment
         });
         mFragmentHomePageBinding.ivHomeCustom.setOnClickListener(v -> {
             if (!UserInfoUtil.isLogin()) {
-                ARouter.getInstance().build("/user/login").navigation();
+                ARouter.getInstance().build(RouterConstant.User.LOGIN).navigation();
             } else {
 //                startActivity(new Intent(mContext, CustomizationActivity.class));
             }

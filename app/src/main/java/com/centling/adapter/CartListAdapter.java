@@ -17,6 +17,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
 import com.centling.activity.GoodsDetailActivity;
 import com.centling.activity.MainActivity;
+import com.centling.constant.RouterConstant;
 import com.centling.entity.CartBean;
 import com.centling.event.CommonEvent;
 import com.centling.http.ApiManager;
@@ -200,10 +201,10 @@ public class CartListAdapter
                     .setText("我的收藏");
             ((LinearLayout) holder.llNoCart.getChildAt(2)).getChildAt(1).setOnClickListener(v -> {
                 if (UserInfoUtil.isLogin()) {
-                    ARouter.getInstance().build("/collection/main").withInt("collection_type", 0)
+                    ARouter.getInstance().build(RouterConstant.Collection.MAIN).withInt("collection_type", 0)
                             .navigation();
                 } else {
-                    ARouter.getInstance().build("/user/login").navigation();
+                    ARouter.getInstance().build(RouterConstant.User.LOGIN).navigation();
                 }
             });
             if (0 == data.size()) {

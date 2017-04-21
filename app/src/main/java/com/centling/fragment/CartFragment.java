@@ -17,6 +17,7 @@ import com.centling.R;
 import com.centling.activity.FragmentContainerActivity;
 import com.centling.activity.GoodsDetailActivity;
 import com.centling.adapter.CartListAdapter;
+import com.centling.constant.RouterConstant;
 import com.centling.databinding.FragmentCartBinding;
 import com.centling.entity.CartBean;
 import com.centling.event.OrderRelationEvent;
@@ -45,7 +46,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  * Created by fionera on 15-12-2.
  */
 
-@Route(path = "/main/cart")
+@Route(path = RouterConstant.Main.CART)
 public class CartFragment
         extends BaseFragment implements View.OnClickListener {
 

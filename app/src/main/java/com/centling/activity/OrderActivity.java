@@ -9,8 +9,9 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.centling.R;
 import com.centling.adapter.OrderFragmentAdapter;
+import com.centling.constant.RouterConstant;
 
-@Route(path = "/order/main")
+@Route(path = RouterConstant.Order.MAIN)
 public class OrderActivity
         extends TitleBarActivity {
 

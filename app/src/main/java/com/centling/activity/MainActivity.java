@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.centling.R;
+import com.centling.constant.RouterConstant;
 import com.centling.event.CommonEvent;
 import com.centling.fragment.CartFragment;
 import com.centling.fragment.CatalogSlideFragment;
@@ -31,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
-@Route(path = "/main/main")
+@Route(path = RouterConstant.Main.MAIN)
 public class MainActivity
         extends BaseActivity {
     private final static int TIME_TO_EXIT = 2000;
@@ -73,7 +74,7 @@ public class MainActivity
             public void onTabSelected(int i) {
                 if ((2 == i || 3 == i) && !UserInfoUtil.isLogin()) {
                     bottomNavigationBar.selectTab(prePos);
-                    ARouter.getInstance().build("/user/login").navigation();
+                    ARouter.getInstance().build(RouterConstant.User.LOGIN).navigation();
                     return;
                 }
                 showSelectedFragment(i);

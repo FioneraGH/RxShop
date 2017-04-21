@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
 import com.centling.adapter.GoodsDetailCommendedAdapter;
+import com.centling.constant.RouterConstant;
 import com.centling.databinding.FragmentGoodsDetailBinding;
 import com.centling.entity.GoodsDetailBean;
 import com.centling.event.OrderRelationEvent;
@@ -81,7 +82,7 @@ public class GoodsDetailFragment
 
     private void buy() {
         if (!UserInfoUtil.isLogin()) {
-            ARouter.getInstance().build("/user/login").navigation();
+            ARouter.getInstance().build(RouterConstant.User.LOGIN).navigation();
             return;
         }
         if (buyNum > selectStorage) {
@@ -373,7 +374,7 @@ public class GoodsDetailFragment
 
     private void sendRequestToAddCart() {
         if (!UserInfoUtil.isLogin()) {
-            ARouter.getInstance().build("/user/login").navigation();
+            ARouter.getInstance().build(RouterConstant.User.LOGIN).navigation();
             return;
         }
         Map<String, String> params = new HashMap<>();
@@ -389,7 +390,7 @@ public class GoodsDetailFragment
 
     private void setGoodsFavorite(boolean isAdd) {
         if (!UserInfoUtil.isLogin()) {
-            ARouter.getInstance().build("/user/login").navigation();
+            ARouter.getInstance().build(RouterConstant.User.LOGIN).navigation();
             return;
         }
         // 0添加  1取消

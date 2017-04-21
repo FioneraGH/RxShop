@@ -4,8 +4,11 @@ import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.alibaba.android.arouter.facade.Postcard;
+import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
+import com.centling.constant.RouterConstant;
 import com.centling.util.ShowToast;
 import com.jaeger.library.StatusBarUtil;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -41,8 +44,12 @@ public class SplashActivity
     }
 
     private void tryToAuth() {
-        ARouter.getInstance().build("/main/main").navigation();
-        finish();
+        ARouter.getInstance().build(RouterConstant.Main.MAIN).navigation(mContext, new NavCallback() {
+            @Override
+            public void onArrival(Postcard postcard) {
+                finish();
+            }
+        });
     }
 
     @Override
