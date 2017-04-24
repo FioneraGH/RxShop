@@ -1,5 +1,6 @@
 package com.centling.http;
 
+import com.centling.entity.AddressOneBean;
 import com.centling.entity.BaseEntity;
 import com.centling.entity.CartBean;
 import com.centling.entity.CatalogBean;
@@ -131,4 +132,28 @@ public interface ApiService {
 
     @POST(HttpConstants.CART_LIST)
     Observable<BaseEntity<CartBean>> cartList(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_CONFIRM_STEP_1)
+    Observable<ResponseBody> orderConfirmStep1(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_CONFIRM_OFFPAY)
+    Observable<ResponseBody> orderConfirmOffPay(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_CONFIRM_GENERAL)
+    Observable<ResponseBody> orderConfirmGeneral(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_CONFIRM_BIRTHDAY)
+    Observable<ResponseBody> orderConfirmBirthDay(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_CONFIRM_CUSTOME)
+    Observable<ResponseBody> orderConfirmCustom(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ORDER_CONFIRM_NEWTRY)
+    Observable<ResponseBody> orderConfirmNewTry(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ADD_ADDRESS)
+    Observable<BaseEntity<AddressOneBean>> addAddress(@Body Map<String, String> info);
+
+    @POST(HttpConstants.ADD_ADDRESS)
+    Observable<BaseEntity<Object>> delAddress(@Body Map<String, String> info);
 }

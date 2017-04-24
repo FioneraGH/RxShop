@@ -433,15 +433,13 @@ public class OrderListAdapter
 
     private void getRsaSign(String orderInfo) {
         Map<String, String> params = new HashMap<>();
-            params.put("orderspec", orderInfo);
+        params.put("orderspec", orderInfo);
         ApiManager.orderSign(params).subscribe(s -> {
             JSONObject rawObj = new JSONObject(s);
             String sign = rawObj.getJSONObject("result").getString("signedstr");
             alipayUtils.pay(orderInfo, sign);
-        },throwable -> {
-            ShowDialog.showSelectDialog(context, "是否重试", "获取订单签名失败！", "",
-                    v -> getRsaSign(orderInfo));
-        });
+        }, throwable -> ShowDialog
+                .showSelectDialog(context, "是否重试", "获取订单签名失败！", "", v -> getRsaSign(orderInfo)));
     }
 
     class OrderHolder

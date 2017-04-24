@@ -1,5 +1,6 @@
 package com.centling.http;
 
+import com.centling.entity.AddressOneBean;
 import com.centling.entity.BaseEntity;
 import com.centling.entity.CartBean;
 import com.centling.entity.CatalogBean;
@@ -189,6 +190,46 @@ public class ApiManager {
 
     public static Observable<CartBean> cartList(Map<String, String> info) {
         return Api.getInstance().getApiService().cartList(info).map(
+                new CommonFilter<>()).compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<String> orderConfirmStep1(Map<String, String> info) {
+        return Api.getInstance().getApiService().orderConfirmStep1(info).map(
+                new NormalFilter()).compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<String> orderConfirmOffPay(Map<String, String> info) {
+        return Api.getInstance().getApiService().orderConfirmOffPay(info).map(
+                new NormalFilter()).compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<String> orderConfirmGeneral(Map<String, String> info) {
+        return Api.getInstance().getApiService().orderConfirmGeneral(info).map(
+                new NormalFilter()).compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<String> orderConfirmBirthDay(Map<String, String> info) {
+        return Api.getInstance().getApiService().orderConfirmBirthDay(info).map(
+                new NormalFilter()).compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<String> orderConfirmCustom(Map<String, String> info) {
+        return Api.getInstance().getApiService().orderConfirmCustom(info).map(
+                new NormalFilter()).compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<String> orderConfirmNewTry(Map<String, String> info) {
+        return Api.getInstance().getApiService().orderConfirmNewTry(info).map(
+                new NormalFilter()).compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<AddressOneBean> addAddress(Map<String, String> info) {
+        return Api.getInstance().getApiService().addAddress(info).map(
+                new CommonFilter<>()).compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<Object> delAddress(Map<String, String> info) {
+        return Api.getInstance().getApiService().delAddress(info).map(
                 new CommonFilter<>()).compose(ApiManager.httpTransformer());
     }
 

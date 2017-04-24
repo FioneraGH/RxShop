@@ -74,4 +74,20 @@ public interface HttpConstants {
     String CART_CLEAR = "?act=member_cart&op=cart_clear";
 
     String CART_LIST = "?act=member_cart&op=cart_list";
+
+    String ORDER_CONFIRM_STEP_1 = "?act=member_buy&op=buy_step1";
+
+    String ORDER_CONFIRM_OFFPAY = "?act=member_buy&op=change_address";
+
+    String ORDER_CONFIRM_GENERAL = "?act=member_buy&op=buy_step2";
+
+    String ORDER_CONFIRM_BIRTHDAY = "?act=vip_gift_isget&op=apply_birthgift";
+
+    String ORDER_CONFIRM_CUSTOME = "?act=member_personal&op=apply_self_make";
+
+    String ORDER_CONFIRM_NEWTRY = "?act=new_product_try&op=apply_record";
+
+    String ADD_ADDRESS = "?act=member_address&op=address_add_v3";
+
+    String DEL_ADDRESS = "?act=member_address&op=address_del";
 }

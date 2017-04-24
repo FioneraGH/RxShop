@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
+import com.centling.activity.OrderConfirmActivity;
 import com.centling.adapter.GoodsDetailCommendedAdapter;
 import com.centling.constant.RouterConstant;
 import com.centling.databinding.FragmentGoodsDetailBinding;
@@ -89,9 +90,9 @@ public class GoodsDetailFragment
             ShowDialog.showConfirmDialog(mContext, "提示", "抱歉,该规格库存不足", null);
             return;
         }
-//        Intent intent = new Intent(mContext, OrderConfirmActivity.class);
-        if (this.intent.hasExtra("judgment_enter")) {
-            switch (this.intent.getStringExtra("judgment_enter")) {
+        Intent jumpIntent = new Intent(mContext, OrderConfirmActivity.class);
+        if (intent.hasExtra("judgment_enter")) {
+            switch (intent.getStringExtra("judgment_enter")) {
                 case "vip":
                     if (UserInfoUtil.getVip().equals("0")) {
                         ShowToast.show("您还不是VIP,不能购买此商品");
@@ -99,11 +100,11 @@ public class GoodsDetailFragment
                     }
                     break;
                 case "birthday":
-                    intent.putExtra("judgment_url", "birthday");
+                    jumpIntent.putExtra("judgment_url", "birthday");
                     break;
                 case "new_try":
                     if (UserInfoUtil.getVip().equals("1")) {
-                        intent.putExtra("judgment_url", "new_try");
+                        jumpIntent.putExtra("judgment_url", "new_try");
                     } else {
                         ShowToast.show("您还不是VIP,不能申请试穿");
                         return;
@@ -111,14 +112,14 @@ public class GoodsDetailFragment
                     break;
                 case "recommand":
                     if (UserInfoUtil.getVip().equals("1")) {
-                        intent.putExtra("judgment_url", "new_try");
+                        jumpIntent.putExtra("judgment_url", "new_try");
                     } else {
                         ShowToast.show("您还不是VIP,不能购买此商品");
                         return;
                     }
                     break;
                 case "custom":
-                    intent.putExtra("judgment_url", "custom");
+                    jumpIntent.putExtra("judgment_url", "custom");
                     break;
                 case "collection":
                     if (honnyType.equals("3") || honnyType.equals("4") || honnyType.equals(
@@ -133,10 +134,10 @@ public class GoodsDetailFragment
                     break;
             }
         }
-        intent.putExtra("cart_from", "0");
-        intent.putExtra("cart_info", selectGoodsId + "|" + buyNum);
-        intent.putExtra("data", honnyType);
-        mContext.startActivity(intent);
+        jumpIntent.putExtra("cart_from", "0");
+        jumpIntent.putExtra("cart_info", selectGoodsId + "|" + buyNum);
+        jumpIntent.putExtra("data", honnyType);
+        mContext.startActivity(jumpIntent);
     }
 
     // 保存每个详细属性的引用, 如用get(0)得到"颜色"的详细属性列表的TextView引用

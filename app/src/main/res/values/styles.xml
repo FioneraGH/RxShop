@@ -32,4 +32,9 @@
         <item name="android:backgroundDimAmount">0.5</item>
         <item name="android:windowBackground">@color/transparent</item>
     </style>
+
+    <style name="AnimPopupWindow" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/anim_activity_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_activity_fade_out</item>
+    </style>
 </resources>
