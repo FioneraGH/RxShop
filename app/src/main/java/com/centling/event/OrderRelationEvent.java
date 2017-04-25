@@ -10,10 +10,6 @@ public interface OrderRelationEvent {
 
     }
 
-    class UpdateCollection {
-
-    }
-
     class UpdateOrder {
         public int order_type;
 

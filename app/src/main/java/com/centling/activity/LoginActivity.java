@@ -17,7 +17,6 @@ import com.centling.databinding.ActivityLoginBinding;
 import com.centling.entity.LoginBean;
 import com.centling.event.UserRelationEvent;
 import com.centling.http.ApiManager;
-import com.centling.util.L;
 import com.centling.util.MD5;
 import com.centling.util.SPUtil;
 import com.centling.util.ShowToast;
@@ -31,6 +30,8 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import timber.log.Timber;
 
 @Route(path = RouterConstant.User.LOGIN)
 public class LoginActivity
@@ -297,7 +298,7 @@ public class LoginActivity
         params.put("nick_name", nickName);
         params.put("user_id", openId);
         ApiManager.bindThirdLogin(params).subscribe(empty -> ShowToast.show("绑定成功"),
-                throwable -> L.d("绑定失败"));
+                throwable -> Timber.d("绑定失败"));
     }
 
     private void bindPushAlias() {

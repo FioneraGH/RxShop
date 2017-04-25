@@ -2,7 +2,6 @@ package com.centling.http;
 
 import android.text.TextUtils;
 
-import com.centling.util.L;
 import com.centling.util.UserInfoUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -21,6 +20,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okio.Buffer;
+import timber.log.Timber;
 
 /**
  * LogInterceptor
@@ -37,19 +37,17 @@ class LogInterceptor
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
 
-        L.d("Logging Interceptor: " + toString());
-        L.d("Logging Request: " + request.url().toString());
-        L.d("Logging Request header: " + request.headers());
-
+        Timber.d("Logging Request:  %s", request.url().toString());
+        Timber.d("Logging Request header:  %s", request.headers());
 
         if (TextUtils.equals(request.method(), "POST")) {
             RequestBody requestBody = request.body();
             if (requestBody != null) {
                 if (requestBody instanceof MultipartBody) {
                     // MultipartBody会乱码
-                    L.d("Logging Request body: MultiPart");
+                    Timber.d("Logging Request body: MultiPart");
                 } else if (requestBody instanceof FormBody) {
-                    L.d("Logging Request body: Form");
+                    Timber.d("Logging Request body: Form");
                 } else {
                     Buffer buffer = new Buffer();
                     requestBody.writeTo(buffer);
@@ -70,7 +68,7 @@ class LogInterceptor
 
                     buffer.clear();
                     request.body().writeTo(buffer);
-                    L.d("Logging Request body: " + buffer.readUtf8());
+                    Timber.d("Logging Request body: " + buffer.readUtf8());
                     buffer.close();
                 }
             }
@@ -80,7 +78,7 @@ class LogInterceptor
         if (response != null && response.body() != null) {
             MediaType mediaType = response.body().contentType();
             String content = response.body().string();
-            L.d("Logging Response: " + content);
+            Timber.d("Logging Response: %s", content);
             return response.newBuilder().body(ResponseBody.create(mediaType, content)).build();
         }
         return response;

@@ -256,7 +256,10 @@ public class UserFragment
                 order_type = 4;
                 break;
         }
-        ARouter.getInstance().build(RouterConstant.Order.MAIN).withInt("order_type", order_type).navigation();
+        if(order_type != -1) {
+            ARouter.getInstance().build(RouterConstant.Order.MAIN).withInt("order_type", order_type)
+                    .navigation();
+        }
         return order_type != -1;
     }
 
@@ -277,8 +280,10 @@ public class UserFragment
                 collection_type = 2;
                 break;
         }
-        ARouter.getInstance().build(RouterConstant.Collection.MAIN).withInt("collection_type", collection_type)
-                .navigation();
+        if (collection_type != -1) {
+            ARouter.getInstance().build(RouterConstant.Collection.MAIN).withInt("collection_type",
+                    collection_type).navigation();
+        }
         return collection_type != -1;
     }
 

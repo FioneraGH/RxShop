@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         minSdkVersion 17
@@ -27,4 +27,6 @@ dependencies {
     compile 'jp.wasabeef:glide-transformations:2.0.2'
     /* Gson */
     compile 'com.google.code.gson:gson:2.8.0'
+    /* Timber */
+    compile 'com.jakewharton.timber:timber:4.5.1'
 }

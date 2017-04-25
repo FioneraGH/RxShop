@@ -6,11 +6,11 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.perf.EventIndex;
 import com.centling.util.CrashHandler;
-import com.centling.util.L;
 import com.tspoon.traceur.Traceur;
 import com.umeng.socialize.PlatformConfig;
 
@@ -18,6 +18,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackManager;
 import rx_activity_result2.RxActivityResult;
+import timber.log.Timber;
 
 /**
  * BaseApplication
@@ -52,7 +53,7 @@ public class BaseApplication
             return;
         }
 
-        L.d("Application Start Time:" + System.currentTimeMillis());
+        Timber.d("Application Start Time:%s", System.currentTimeMillis());
 
         getDisplayMetrics();
 
@@ -65,8 +66,10 @@ public class BaseApplication
         if (!BuildConfig.DEBUG) {
             CrashHandler crashHandler = CrashHandler.getInstance();
             crashHandler.init(getApplicationContext());
+            Timber.plant(new CrashReportingTree());
             Traceur.disableLogging();
         } else {
+            Timber.plant(new Timber.DebugTree());
             Traceur.enableLogging();
             ARouter.openLog();
             ARouter.openDebug();
@@ -83,7 +86,7 @@ public class BaseApplication
         for (ActivityManager.RunningAppProcessInfo appProcess : activityManager
                 .getRunningAppProcesses()) {
             if (appProcess.pid == android.os.Process.myPid()) {
-                L.d("Current Process:" + appProcess.processName + " -> " + getPackageName());
+                Timber.d("Current Process:%s->%s", appProcess.processName, getPackageName());
                 return TextUtils.equals(appProcess.processName, getPackageName());
             }
         }
@@ -94,6 +97,22 @@ public class BaseApplication
         PlatformConfig.setWeixin("wx7592af40381460a8", "d4624c36b6795d1d99dcf0547af5443d");//honny
         PlatformConfig.setSinaWeibo("260277561", "c54917be16e572cb8d7629b96adcd05f");//honny
         PlatformConfig.setQQZone("1105253166", "y58O2JPrlOkbz1oB"); //honny
+    }
+
+    private static class CrashReportingTree
+            extends Timber.Tree {
+        @Override
+        protected void log(int priority, String tag, String message, Throwable t) {
+            if (priority == Log.VERBOSE || priority == Log.DEBUG) {
+                return;
+            }
+
+            Log.e(tag, message);
+
+            if (t != null) {
+                t.printStackTrace();
+            }
+        }
     }
 
     @Override

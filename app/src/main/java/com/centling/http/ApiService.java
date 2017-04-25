@@ -5,9 +5,12 @@ import com.centling.entity.BaseEntity;
 import com.centling.entity.CartBean;
 import com.centling.entity.CatalogBean;
 import com.centling.entity.CatalogGoodsBean;
+import com.centling.entity.CollectionBean;
+import com.centling.entity.FootPrintBean;
 import com.centling.entity.FriendBean;
 import com.centling.entity.HomeBean;
 import com.centling.entity.LoginBean;
+import com.centling.entity.MyCustomBean;
 import com.centling.entity.OrderBean;
 
 import java.util.Map;
@@ -51,6 +54,19 @@ public interface ApiService {
     @GET(HttpConstants.DISCOUNT_LIST)
     Observable<BaseEntity<CatalogGoodsBean>> getDiscountList(@Query("curpage") int curPage,
                                                              @Query("page") int pageSize);
+
+    @POST(HttpConstants.COLLECTION_LIST)
+    Observable<BaseEntity<CollectionBean>> getCollectionList(@Query("curpage") int curPage,
+                                                             @Query("page") int pageSize,
+                                                             @Body Map<String, String> info);
+
+    @POST(HttpConstants.CUSTOM_LIST)
+    Observable<BaseEntity<MyCustomBean>> getCustomList(@Query("curpage") int curPage,
+                                                       @Query("page") int pageSize,
+                                                       @Body Map<String, String> info);
+
+    @POST(HttpConstants.FOOTPRINT_LIST)
+    Observable<BaseEntity<FootPrintBean>> getFootprintList(@Body Map<String, String> info);
 
     @GET(HttpConstants.GOODS_DETAIL)
     Observable<ResponseBody> getGoodsDetail(
@@ -154,6 +170,15 @@ public interface ApiService {
     @POST(HttpConstants.ADD_ADDRESS)
     Observable<BaseEntity<AddressOneBean>> addAddress(@Body Map<String, String> info);
 
-    @POST(HttpConstants.ADD_ADDRESS)
+    @POST(HttpConstants.DEL_ADDRESS)
     Observable<BaseEntity<Object>> delAddress(@Body Map<String, String> info);
+
+    @POST(HttpConstants.CLEAR_FOOTPRINT)
+    Observable<BaseEntity<Object>> clearFootprint(@Body Map<String, String> info);
+
+    @POST(HttpConstants.COLLECTION_DEL)
+    Observable<BaseEntity<Object>> collectionDel(@Body Map<String, String> info);
+
+    @POST(HttpConstants.CUSTOM_DELETE)
+    Observable<BaseEntity<Object>> customDelete(@Body Map<String, String> info);
 }

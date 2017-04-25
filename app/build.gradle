@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
 
     signingConfigs {
         config {
@@ -129,7 +129,7 @@ dependencies {
     /* MultiDex */
     compile 'com.android.support:multidex:1.0.1'
 
-    /* Banner */
+    /* Puller */
     compile(name: 'ptr_lib', version: '1.0.0', ext: 'aar')
     /* Banner */
     compile(name: 'banner', version: '1.4.8', ext: 'aar')

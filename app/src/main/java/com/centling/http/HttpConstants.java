@@ -90,4 +90,16 @@ public interface HttpConstants {
     String ADD_ADDRESS = "?act=member_address&op=address_add_v3";
 
     String DEL_ADDRESS = "?act=member_address&op=address_del";
+
+    String CLEAR_FOOTPRINT = "?act=member_footprint&op=del_allfootprint";
+
+    String COLLECTION_DEL = "?act=favorites&op=del_favorites";
+
+    String CUSTOM_DELETE = "?act=member_custom&op=del_custom";
+
+    String COLLECTION_LIST = "?act=favorites&op=favorites_list&client=android";
+
+    String CUSTOM_LIST = "?act=member_custom&op=custom&client=android";
+
+    String FOOTPRINT_LIST = "?act=member_footprint&op=footprint&client=android";
 }

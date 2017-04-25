@@ -26,13 +26,13 @@ import com.centling.adapter.GoodsDetailCommendedAdapter;
 import com.centling.constant.RouterConstant;
 import com.centling.databinding.FragmentGoodsDetailBinding;
 import com.centling.entity.GoodsDetailBean;
+import com.centling.event.CollectionRelationEvent;
 import com.centling.event.OrderRelationEvent;
 import com.centling.http.ApiManager;
 import com.centling.http.HttpConstants;
 import com.centling.popupwindow.SharedPopupWindow;
 import com.centling.util.DisplayUtil;
 import com.centling.util.ImageUtil;
-import com.centling.util.L;
 import com.centling.util.SPUtil;
 import com.centling.util.ShowDialog;
 import com.centling.util.ShowToast;
@@ -409,7 +409,7 @@ public class GoodsDetailFragment
             isFavorite = !isFavorite;
             mFragmentGoodsDetailBinding.ivGoodsDetailFavorite.setSelected(isFavorite);
             ShowToast.show("操作成功");
-            EventBus.getDefault().post(new OrderRelationEvent.UpdateCollection());
+            EventBus.getDefault().post(new CollectionRelationEvent.UpdateCollection());
         }, throwable -> {
             dismissLoading();
             ShowDialog.showConfirmDialog(mContext, "提示", "操作失败", v -> mActivity.finish());
@@ -526,7 +526,6 @@ public class GoodsDetailFragment
             }
             setGoodsInfo(valueNameList);
         }, throwable -> {
-            L.d(throwable.getMessage());
             dismissLoading();
             ShowToast.show("获取详情失败");
         });
