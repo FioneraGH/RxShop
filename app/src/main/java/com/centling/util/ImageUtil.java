@@ -8,7 +8,6 @@ import com.centling.BaseApplication;
 import com.centling.R;
 
 import io.reactivex.Single;
-import io.reactivex.SingleEmitter;
 import io.reactivex.SingleOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.BiConsumer;
@@ -92,12 +91,9 @@ public class ImageUtil {
     }
 
     public static void clearCache() {
-        Single.create(new SingleOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(SingleEmitter<Integer> e) throws Exception {
-                Glide.get(BaseApplication.getInstance()).clearDiskCache();
-                e.onSuccess(0);
-            }
+        Single.create((SingleOnSubscribe<Integer>) e -> {
+            Glide.get(BaseApplication.getInstance()).clearDiskCache();
+            e.onSuccess(0);
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new BiConsumer<Integer, Throwable>() {
             @Override
             public void accept(Integer integer, Throwable throwable) throws Exception {

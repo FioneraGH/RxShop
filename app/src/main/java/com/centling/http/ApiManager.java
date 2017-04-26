@@ -244,6 +244,11 @@ public class ApiManager {
                 new NormalFilter()).compose(ApiManager.httpTransformer());
     }
 
+    public static Observable<String> changeUserAvatar(Map<String, String> info) {
+        return Api.getInstance().getNoGsonApiService().changeUserAvatar(info).map(
+                new NormalFilter()).compose(ApiManager.httpTransformer());
+    }
+
     public static Observable<AddressOneBean> addAddress(Map<String, String> info) {
         return Api.getInstance().getApiService().addAddress(info).map(new CommonFilter<>()).compose(
                 ApiManager.httpTransformer());
@@ -266,6 +271,11 @@ public class ApiManager {
 
     public static Observable<Object> customDelete(Map<String, String> info) {
         return Api.getInstance().getApiService().customDelete(info).map(new CommonFilter<>())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<Object> changeUserInfo(Map<String, String> info) {
+        return Api.getInstance().getApiService().changeUserInfo(info).map(new CommonFilter<>())
                 .compose(ApiManager.httpTransformer());
     }
 

@@ -167,6 +167,9 @@ public interface ApiService {
     @POST(HttpConstants.ORDER_CONFIRM_NEWTRY)
     Observable<ResponseBody> orderConfirmNewTry(@Body Map<String, String> info);
 
+    @POST(HttpConstants.CHANGE_USER_AVATAR)
+    Observable<ResponseBody> changeUserAvatar(@Body Map<String, String> info);
+
     @POST(HttpConstants.ADD_ADDRESS)
     Observable<BaseEntity<AddressOneBean>> addAddress(@Body Map<String, String> info);
 
@@ -181,4 +184,7 @@ public interface ApiService {
 
     @POST(HttpConstants.CUSTOM_DELETE)
     Observable<BaseEntity<Object>> customDelete(@Body Map<String, String> info);
+
+    @POST(HttpConstants.CHANGE_USER_INFO)
+    Observable<BaseEntity<Object>> changeUserInfo(@Body Map<String, String> info);
 }

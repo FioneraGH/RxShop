@@ -81,6 +81,12 @@
         <activity
             android:name="com.centling.activity.CollectionActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.centling.activity.SettingsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.centling.activity.MyInfoActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

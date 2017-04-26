@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/divider_1dp_grey3"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/grey3"/>
+
+            <LinearLayout
+                android:id="@+id/ll_my_info_avator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="16dp"
+                    android:text="头像" />
+
+
+                <com.centling.widget.CircleTextImageView
+                    android:id="@+id/iv_user_info_user_avatar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/iv_avatar_default" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="昵称" />
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_my_info_if_nickname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightCenter"
+                    app:badge_horizontalMargin="10dp"
+                    app:badge_verticalMargin="2dp">
+
+                    <TextView
+                        android:id="@+id/tv_my_info_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:textColor="@color/black2" />
+
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="真实姓名" />
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_my_info_if_realname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightCenter"
+                    app:badge_horizontalMargin="10dp"
+                    app:badge_verticalMargin="2dp">
+
+                    <TextView
+                        android:id="@+id/tv_my_info_realname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:textColor="@color/black2" />
+
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="Q Q" />
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_my_info_if_qq"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightCenter"
+                    app:badge_horizontalMargin="10dp"
+                    app:badge_verticalMargin="2dp">
+
+                    <TextView
+                        android:id="@+id/tv_my_info_qq"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:padding="16dp"
+                        android:textColor="@color/black2" />
+
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="邀请码" />
+
+                <TextView
+                    android:id="@+id/tv_my_info_invite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:padding="16dp"
+                    android:text="123456"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/grey3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="性别" />
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_my_info_if_gender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightCenter"
+                    app:badge_horizontalMargin="10dp"
+                    app:badge_verticalMargin="2dp">
+
+                    <TextView
+                        android:id="@+id/tv_my_info_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="男"
+                        android:textColor="@color/black2"
+                        android:textSize="14sp" />
+
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="身高" />
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_my_info_if_tall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightCenter"
+                    app:badge_horizontalMargin="10dp"
+                    app:badge_verticalMargin="2dp">
+
+                    <TextView
+                        android:id="@+id/tv_my_info_tall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="177cm"
+                        android:textColor="@color/black2"
+                        android:textSize="14sp" />
+
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="体重" />
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_my_info_if_weight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightCenter"
+                    app:badge_horizontalMargin="10dp"
+                    app:badge_verticalMargin="2dp">
+
+                    <TextView
+                        android:id="@+id/tv_my_info_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="70kg"
+                        android:textColor="@color/black2"
+                        android:textSize="14sp" />
+
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="肩宽" />
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_my_info_if_shoulder"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightCenter"
+                    app:badge_horizontalMargin="10dp"
+                    app:badge_verticalMargin="2dp">
+
+                    <TextView
+                        android:id="@+id/tv_my_info_shoulder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="70cm"
+                        android:textColor="@color/black2"
+                        android:textSize="14sp" />
+
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="生日" />
+
+                <com.centling.widget.badgeview.BGABadgeLinearLayout
+                    android:id="@+id/bll_my_info_if_birth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    app:badge_gravity="rightCenter"
+                    app:badge_horizontalMargin="10dp"
+                    app:badge_verticalMargin="2dp">
+
+                    <TextView
+                        android:id="@+id/tv_my_info_birth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="2015-01-01"
+                        android:textColor="@color/black2"
+                        android:textSize="14sp" />
+
+                </com.centling.widget.badgeview.BGABadgeLinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_my_info_save"
+                android:layout_width="240dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/bg_dark_red_corner5"
+                android:gravity="center"
+                android:text="保存"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

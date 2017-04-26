@@ -1,6 +1,5 @@
 package com.centling.fragment;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -37,8 +36,6 @@ import jp.wasabeef.glide.transformations.CropTransformation;
 
 public class UserFragment
         extends BaseFragment implements View.OnClickListener {
-
-    private static Intent commonIntent = new Intent();
 
     private FragmentUserinfoBinding mFragmentUserinfoBinding;
 
@@ -205,31 +202,23 @@ public class UserFragment
     boolean onUserClick(View v) {
         switch (v.getId()) {
             case R.id.iv_user_info_setting:
-//                commonIntent.setClass(mContext, SettingsActivity.class);
-                startActivity(commonIntent);
-                break;
+                ARouter.getInstance().build(RouterConstant.User.SETTING).navigation();
+                return true;
             case R.id.tv_user_info_my_info:
-//                commonIntent.setClass(mContext, MyInfoActivity.class);
-                startActivity(commonIntent);
-                break;
+                ARouter.getInstance().build(RouterConstant.User.INFO).navigation();
+                return true;
             case R.id.tv_user_info_card_account:
-//                commonIntent.setClass(mContext, PresentCardActivity.class);
-                startActivity(commonIntent);
-                break;
+                ARouter.getInstance().build(RouterConstant.User.SETTING).navigation();
+                return true;
             case R.id.tv_user_info_get_score:
-//                commonIntent.setClass(mContext, ScoreExchangeActivity.class).putExtra(
-//                        "is_add_score", true);
-                startActivity(commonIntent);
-                break;
+                ARouter.getInstance().build(RouterConstant.User.SETTING).navigation();
+                return true;
             case R.id.tv_user_info_score:
-//                commonIntent.setClass(mContext, ScoreExchangeActivity.class).putExtra(
-//                        "is_add_score", false);
-                startActivity(commonIntent);
-                break;
+                ARouter.getInstance().build(RouterConstant.User.SETTING).navigation();
+                return true;
             case R.id.tv_user_info_gold_account:
-//                commonIntent.setClass(mContext, GoldsAccountActivity.class);
-                startActivity(commonIntent);
-                break;
+                ARouter.getInstance().build(RouterConstant.User.SETTING).navigation();
+                return true;
         }
         return false;
     }
@@ -293,20 +282,20 @@ public class UserFragment
     void onMiscClick(View v) {
         switch (v.getId()) {
             case R.id.ll_user_info_my_msg:
-//                commonIntent.setClass(mContext, MyMessageActivity.class);
-                startActivity(commonIntent);
+                ARouter.getInstance().build(RouterConstant.User.SETTING)
+                        .navigation();
                 break;
             case R.id.ll_user_info_manage_address:
-//                commonIntent.setClass(mContext, AddressListActivity.class);
-                startActivity(commonIntent);
+                ARouter.getInstance().build(RouterConstant.User.SETTING)
+                        .navigation();
                 break;
             case R.id.ll_user_info_customization_data:
-//                commonIntent.setClass(mContext, MeasureDataActivity.class);
-                startActivity(commonIntent);
+                ARouter.getInstance().build(RouterConstant.User.SETTING)
+                        .navigation();
                 break;
             case R.id.ll_user_info_my_friends:
-//                commonIntent.setClass(mContext, MyFriendsActivity.class);
-                startActivity(commonIntent);
+                ARouter.getInstance().build(RouterConstant.User.SETTING)
+                        .navigation();
                 break;
         }
     }

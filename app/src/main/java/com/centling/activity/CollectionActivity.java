@@ -8,6 +8,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.centling.R;
 import com.centling.adapter.CollectionFragmentAdapter;
+import com.centling.constant.RouterConstant;
 import com.centling.event.CollectionRelationEvent;
 import com.centling.http.ApiManager;
 import com.centling.util.ShowDialog;
@@ -18,7 +19,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 
-@Route(path = "/collection/main")
+@Route(path = RouterConstant.Collection.MAIN)
 public class CollectionActivity
         extends TitleBarActivity {
 

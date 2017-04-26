@@ -18,6 +18,8 @@ public interface RouterConstant {
     String GROUP_USER = "/user/";
     interface User {
         String LOGIN = GROUP_USER + "login";
+        String SETTING = GROUP_USER + "setting";
+        String INFO = GROUP_USER + "info";
     }
 
     // group order
