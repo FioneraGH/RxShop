@@ -44,8 +44,8 @@
     <color name="trans_grey1">#CC555555</color>
     <color name="grey0">#696969</color>
     <color name="grey">#808080</color>
-    <color name="grey1">#999999</color>
-    <color name="grey2">#dcdcdc</color>
+    <color name="grey1">#909090</color>
+    <color name="grey2">#e0e0e0</color>
     <color name="grey3">#f0f0f0</color>
 
     <color name="text_default">#ff454545</color>

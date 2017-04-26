@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="选择金额（您可以选择自定义金额）:" />
+
+        <LinearLayout
+            android:id="@+id/llGoldsRechargeOption1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/sl_bg_golds_recharge_tv"
+                android:gravity="center"
+                android:paddingBottom="12dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="12dp"
+                android:textSize="14sp"
+                android:text="￥2000" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/sl_bg_golds_recharge_tv"
+                android:gravity="center"
+                android:paddingBottom="12dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="12dp"
+                android:text="￥5000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@drawable/sl_bg_golds_recharge_tv"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="12dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="12dp"
+                android:text="￥10000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/sl_bg_golds_recharge_tv"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="12dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="12dp"
+                android:text="￥20000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llGoldsRechargeOption2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/sl_bg_golds_recharge_tv"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="￥8000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/sl_bg_golds_recharge_tv"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="￥10000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@drawable/sl_bg_golds_recharge_tv"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="￥15000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/sl_bg_golds_recharge_tv"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="￥20000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_golds_recharge_custom_amount"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_white_grey_corner5"
+                android:gravity="center"
+                android:hint="请输入自定义金额"
+                android:inputType="number"
+                android:padding="4dp"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_golds_recharge_apply_custom_amount"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/bg_white_grey_corner5"
+                android:gravity="center"
+                android:text="应用"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:text="支付金额：" />
+
+            <TextView
+                android:id="@+id/tv_golds_recharge_pay_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:text="￥0"
+                android:textColor="@color/dark_red_default" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:text="到帐金额：" />
+
+            <TextView
+                android:id="@+id/tv_golds_recharge_get_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:text="￥0"
+                android:textColor="@color/dark_red_default" />
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/etGoldsRechargeCardNO"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_white_grey_corner5"
+            android:hint="请输入金币卡帐号"
+            android:inputType="numberDecimal"
+            android:padding="4dp"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+
+        <EditText
+            android:id="@+id/etGoldsRechargeCardPW"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_white_grey_corner5"
+            android:hint="请输入金币卡兑换密码"
+            android:padding="4dp"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_golds_recharge_confirm"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_dark_red_corner5"
+            android:gravity="center"
+            android:text="立即充值"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+</layout>

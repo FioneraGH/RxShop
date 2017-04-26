@@ -39,6 +39,19 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <!--AliPay-->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <!--AliPay-->
+
         <activity
             android:name="com.centling.activity.SplashActivity"
             android:screenOrientation="portrait"
@@ -86,6 +99,15 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.centling.activity.MyInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.centling.activity.GoldsAccountActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.centling.activity.GoldsRecordActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.centling.activity.GoldsRechargeActivity"
             android:screenOrientation="portrait"/>
     </application>
 

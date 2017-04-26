@@ -20,6 +20,9 @@ public interface RouterConstant {
         String LOGIN = GROUP_USER + "login";
         String SETTING = GROUP_USER + "setting";
         String INFO = GROUP_USER + "info";
+        String GOLDS = GROUP_USER + "golds";
+        String GOLDS_RECORD = GROUP_USER + "golds/record";
+        String GOLDS_RECHARGE = GROUP_USER + "golds/recharge";
     }
 
     // group order

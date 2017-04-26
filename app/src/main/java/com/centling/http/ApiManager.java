@@ -8,6 +8,8 @@ import com.centling.entity.CatalogGoodsBean;
 import com.centling.entity.CollectionBean;
 import com.centling.entity.FootPrintBean;
 import com.centling.entity.FriendBean;
+import com.centling.entity.GoldsRecordBean;
+import com.centling.entity.GoldsRuleBean;
 import com.centling.entity.HomeBean;
 import com.centling.entity.LoginBean;
 import com.centling.entity.MyCustomBean;
@@ -244,6 +246,16 @@ public class ApiManager {
                 new NormalFilter()).compose(ApiManager.httpTransformer());
     }
 
+    public static Observable<String> goldBalance(Map<String, String> info) {
+        return Api.getInstance().getNoGsonApiService().goldBalance(info).map(
+                new NormalFilter()).compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<String> goldRecharge(Map<String, Object> info) {
+        return Api.getInstance().getNoGsonApiService().goldRecharge(info).map(
+                new NormalFilter()).compose(ApiManager.httpTransformer());
+    }
+
     public static Observable<String> changeUserAvatar(Map<String, String> info) {
         return Api.getInstance().getNoGsonApiService().changeUserAvatar(info).map(
                 new NormalFilter()).compose(ApiManager.httpTransformer());
@@ -252,6 +264,16 @@ public class ApiManager {
     public static Observable<AddressOneBean> addAddress(Map<String, String> info) {
         return Api.getInstance().getApiService().addAddress(info).map(new CommonFilter<>()).compose(
                 ApiManager.httpTransformer());
+    }
+
+    public static Observable<GoldsRecordBean> goldRecordList(Map<String, String> info) {
+        return Api.getInstance().getApiService().goldRecordList(info).map(new CommonFilter<>())
+                .compose(ApiManager.httpTransformer());
+    }
+
+    public static Observable<GoldsRuleBean> goldRules(Map<String, String> info) {
+        return Api.getInstance().getApiService().goldRules(info).map(new CommonFilter<>())
+                .compose(ApiManager.httpTransformer());
     }
 
     public static Observable<Object> delAddress(Map<String, String> info) {

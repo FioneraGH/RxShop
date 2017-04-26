@@ -15,7 +15,7 @@
     <View
         android:id="@+id/v_common_title_bar_split_line"
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="1dp"
         android:visibility="gone"
         android:layout_below="@id/tb_common_title_bar"
         android:background="@color/grey2"/>

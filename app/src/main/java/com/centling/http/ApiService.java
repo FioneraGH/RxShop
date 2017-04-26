@@ -8,6 +8,8 @@ import com.centling.entity.CatalogGoodsBean;
 import com.centling.entity.CollectionBean;
 import com.centling.entity.FootPrintBean;
 import com.centling.entity.FriendBean;
+import com.centling.entity.GoldsRecordBean;
+import com.centling.entity.GoldsRuleBean;
 import com.centling.entity.HomeBean;
 import com.centling.entity.LoginBean;
 import com.centling.entity.MyCustomBean;
@@ -169,6 +171,18 @@ public interface ApiService {
 
     @POST(HttpConstants.CHANGE_USER_AVATAR)
     Observable<ResponseBody> changeUserAvatar(@Body Map<String, String> info);
+
+    @POST(HttpConstants.GOLD_BALANCE)
+    Observable<ResponseBody> goldBalance(@Body Map<String, String> info);
+
+    @POST(HttpConstants.GOLD_RECHARGE)
+    Observable<ResponseBody> goldRecharge(@Body Map<String, Object> info);
+
+    @POST(HttpConstants.GOLD_RECORD_LIST)
+    Observable<BaseEntity<GoldsRecordBean>> goldRecordList(@Body Map<String, String> info);
+
+    @POST(HttpConstants.GOLD_RULES)
+    Observable<BaseEntity<GoldsRuleBean>> goldRules(@Body Map<String, String> info);
 
     @POST(HttpConstants.ADD_ADDRESS)
     Observable<BaseEntity<AddressOneBean>> addAddress(@Body Map<String, String> info);

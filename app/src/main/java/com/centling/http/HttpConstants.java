@@ -106,4 +106,12 @@ public interface HttpConstants {
     String CHANGE_USER_INFO = "?act=personal_data&op=change_personal_data";
 
     String CHANGE_USER_AVATAR = "?act=upload&op=uploadAvatar";
+
+    String GOLD_BALANCE = "?act=gold_coins&op=gold_coins";
+
+    String GOLD_RECORD_LIST = "?act=gold_coins&op=gold_detail";
+
+    String GOLD_RULES = "?act=gold_coins&op=recharge_rules";
+
+    String GOLD_RECHARGE = "?act=gold_coins&op=recharge_add";
 }

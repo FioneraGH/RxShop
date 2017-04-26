@@ -591,10 +591,8 @@ public class OrderConfirmActivity
             JSONObject rawObj = new JSONObject(s);
             String sign = rawObj.getJSONObject("result").getString("signedstr");
             alipayUtils.pay(orderInfo, sign);
-        }, throwable -> {
-            ShowDialog.showSelectDialog(mContext, "是否重试", "获取订单签名失败！", "",
-                    v -> getRsaSign(orderInfo));
-        });
+        }, throwable -> ShowDialog
+                .showSelectDialog(mContext, "是否重试", "获取订单签名失败！", "", v -> getRsaSign(orderInfo)));
     }
 
     private void showChangeInfoPop(PopupWindow pop) {

@@ -57,8 +57,8 @@ public class UserFragment
 
         mFragmentUserinfoBinding.ivUserInfoSetting.setOnClickListener(this);
         mFragmentUserinfoBinding.tvUserInfoMyInfo.setOnClickListener(this);
-        mFragmentUserinfoBinding.tvUserInfoCardAccount.setOnClickListener(this);
         mFragmentUserinfoBinding.tvUserInfoGetScore.setOnClickListener(this);
+        mFragmentUserinfoBinding.tvUserInfoCardAccount.setOnClickListener(this);
         mFragmentUserinfoBinding.tvUserInfoScore.setOnClickListener(this);
         mFragmentUserinfoBinding.tvUserInfoGoldAccount.setOnClickListener(this);
 
@@ -207,10 +207,10 @@ public class UserFragment
             case R.id.tv_user_info_my_info:
                 ARouter.getInstance().build(RouterConstant.User.INFO).navigation();
                 return true;
-            case R.id.tv_user_info_card_account:
-                ARouter.getInstance().build(RouterConstant.User.SETTING).navigation();
-                return true;
             case R.id.tv_user_info_get_score:
+                ARouter.getInstance().build(RouterConstant.User.GOLDS).navigation();
+                return true;
+            case R.id.tv_user_info_card_account:
                 ARouter.getInstance().build(RouterConstant.User.SETTING).navigation();
                 return true;
             case R.id.tv_user_info_score:
