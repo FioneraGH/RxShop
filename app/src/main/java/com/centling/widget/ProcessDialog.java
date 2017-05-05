@@ -28,7 +28,7 @@ public class ProcessDialog
         if (alertDialog != null && alertDialog.isShowing()) {
             try {
                 alertDialog.dismiss();
-            }catch (Exception ignored){
+            } catch (Exception ignored) {
 
             }
         }

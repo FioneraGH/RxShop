@@ -112,11 +112,11 @@ public class HomePageFragment
         mFragmentHomePageBinding.bannerHome.update(bannerUrl);
 
         ImageUtil.loadImage(mHomeBean.getGoodsRecommend().get(0).getImage(),
-                mFragmentHomePageBinding.ivHomeRecommended1, R.drawable.iv_place_holder_1);
+                mFragmentHomePageBinding.ivHomeRecommended1, R.drawable.iv_place_holder_2);
         ImageUtil.loadImage(mHomeBean.getGoodsRecommend().get(1).getImage(),
-                mFragmentHomePageBinding.ivHomeRecommended2, R.drawable.iv_place_holder_1);
+                mFragmentHomePageBinding.ivHomeRecommended2, R.drawable.iv_place_holder_2);
         ImageUtil.loadImage(mHomeBean.getGoodsDiscount().get(0).getImage(),
-                mFragmentHomePageBinding.ivHomeRecommended3, R.drawable.iv_place_holder_1);
+                mFragmentHomePageBinding.ivHomeRecommended3, R.drawable.iv_place_holder_2);
 
         mFragmentHomePageBinding.ivHomeRecommended1.setOnClickListener(
                 v -> clickBanner(mHomeBean.getGoodsRecommend().get(0).getType(),

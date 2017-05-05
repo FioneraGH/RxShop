@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 
 import com.centling.R;
 
-
 public class FlexibleImageView extends AppCompatImageView {
     private int mProportionHeight;
     private int mProportionWidth;
@@ -30,5 +29,11 @@ public class FlexibleImageView extends AppCompatImageView {
             mHeight = mWidth * mProportionHeight / mProportionWidth;
         }
         setMeasuredDimension(mWidth, mHeight);
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        setScaleType(ScaleType.CENTER_CROP);
     }
 }
