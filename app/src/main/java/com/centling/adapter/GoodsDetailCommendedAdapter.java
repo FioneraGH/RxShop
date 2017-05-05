@@ -11,9 +11,9 @@ import android.widget.TextView;
 import com.centling.R;
 import com.centling.activity.GoodsDetailActivity;
 import com.centling.entity.GoodsDetailBean;
-import com.centling.util.DisplayUtil;
+import com.fionera.base.util.DisplayUtil;
 import com.centling.util.ImageUtil;
-import com.centling.widget.FlexibleImageView;
+import com.fionera.base.widget.FlexibleImageView;
 
 import java.util.List;
 import java.util.Locale;

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.centling.R;
 import com.centling.activity.GoodsDetailActivity;
 import com.centling.entity.CatalogGoodsBean;
-import com.centling.util.DisplayUtil;
+import com.fionera.base.util.DisplayUtil;
 import com.centling.util.ImageUtil;
 
 import java.util.List;

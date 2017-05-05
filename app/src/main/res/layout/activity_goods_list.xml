@@ -37,7 +37,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
-                <com.centling.widget.DrawableTextView
+                <com.fionera.base.widget.DrawableTextView
                     android:id="@+id/title_bar_title"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -78,7 +78,7 @@
             android:layout_height="45dp"
             android:orientation="horizontal">
 
-            <com.centling.widget.DrawableTextView
+            <com.fionera.base.widget.DrawableTextView
                 android:id="@+id/tv_goods_list_sales"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -93,7 +93,7 @@
                 app:right_height="5dp"
                 app:right_width="7dp" />
 
-            <com.centling.widget.DrawableTextView
+            <com.fionera.base.widget.DrawableTextView
                 android:id="@+id/tv_goods_list_popularity"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -108,7 +108,7 @@
                 app:right_height="5dp"
                 app:right_width="7dp" />
 
-            <com.centling.widget.DrawableTextView
+            <com.fionera.base.widget.DrawableTextView
                 android:id="@+id/tv_goods_list_price"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -123,7 +123,7 @@
                 app:right_height="5dp"
                 app:right_width="7dp" />
 
-            <com.centling.widget.DrawableTextView
+            <com.fionera.base.widget.DrawableTextView
                 android:id="@+id/tv_goods_list_latest"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -140,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.centling.widget.AutoRecyclerView
+            <com.fionera.base.widget.AutoRecyclerView
                 android:id="@+id/rv_goods_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

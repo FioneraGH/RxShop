@@ -1,4 +1,4 @@
-package com.centling.widget;
+package com.fionera.base.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,8 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
-import com.centling.util.DisplayUtil;
-
+import com.fionera.base.util.DisplayUtil;
 
 /**
  * RoundedFrameLayout

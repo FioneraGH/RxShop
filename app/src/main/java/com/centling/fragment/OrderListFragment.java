@@ -1,6 +1,5 @@
 package com.centling.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,7 +14,7 @@ import com.centling.entity.OrderBean;
 import com.centling.event.OrderRelationEvent;
 import com.centling.http.ApiManager;
 import com.centling.util.ShowToast;
-import com.centling.widget.AutoRecyclerView;
+import com.fionera.base.widget.AutoRecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

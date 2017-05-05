@@ -15,7 +15,7 @@
         android:textColor="@color/black1"
         android:textSize="16sp" />
 
-    <com.centling.widget.RadioGroupFlowLayout
+    <com.fionera.base.widget.RadioGroupFlowLayout
         android:id="@+id/fl_buy_popup_item_property"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

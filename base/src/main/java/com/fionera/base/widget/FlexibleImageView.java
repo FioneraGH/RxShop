@@ -1,11 +1,11 @@
-package com.centling.widget;
+package com.fionera.base.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 
-import com.centling.R;
+import com.fionera.base.R;
 
 public class FlexibleImageView extends AppCompatImageView {
     private int mProportionHeight;

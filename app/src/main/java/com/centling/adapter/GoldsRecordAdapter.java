@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.centling.R;
 import com.centling.entity.GoldsRecordBean;
-import com.centling.widget.CircleTextImageView;
+import com.fionera.base.widget.CircleTextImageView;
 
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;

@@ -67,7 +67,7 @@
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
-                    <com.centling.widget.DrawableTextView
+                    <com.fionera.base.widget.DrawableTextView
                         android:id="@+id/iv_home_vip"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -80,7 +80,7 @@
                         app:top_height="60dp"
                         app:top_width="60dp"/>
 
-                    <com.centling.widget.DrawableTextView
+                    <com.fionera.base.widget.DrawableTextView
                         android:id="@+id/iv_home_brand"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -93,7 +93,7 @@
                         app:top_height="60dp"
                         app:top_width="60dp"/>
 
-                    <com.centling.widget.DrawableTextView
+                    <com.fionera.base.widget.DrawableTextView
                         android:id="@+id/iv_home_custom"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -106,7 +106,7 @@
                         app:top_height="60dp"
                         app:top_width="60dp"/>
 
-                    <com.centling.widget.DrawableTextView
+                    <com.fionera.base.widget.DrawableTextView
                         android:id="@+id/iv_home_cool"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -121,7 +121,7 @@
 
                 </LinearLayout>
 
-                <com.centling.widget.FlexibleImageView
+                <com.fionera.base.widget.FlexibleImageView
                     android:id="@+id/iv_home_recommended_1"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
@@ -130,7 +130,7 @@
                     android:layout_marginEnd="16dp"
                     android:scaleType="centerCrop" />
 
-                <com.centling.widget.FlexibleImageView
+                <com.fionera.base.widget.FlexibleImageView
                     android:id="@+id/iv_home_recommended_2"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
@@ -139,7 +139,7 @@
                     android:layout_marginTop="8dp"
                     android:scaleType="centerCrop" />
 
-                <com.centling.widget.FlexibleImageView
+                <com.fionera.base.widget.FlexibleImageView
                     android:id="@+id/iv_home_recommended_3"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"

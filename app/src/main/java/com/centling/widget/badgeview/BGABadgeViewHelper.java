@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 
 import com.centling.R;
-import com.centling.util.DisplayUtil;
+import com.fionera.base.util.DisplayUtil;
 
 public class BGABadgeViewHelper {
 

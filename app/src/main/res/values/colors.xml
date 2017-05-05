@@ -8,46 +8,4 @@
     <!--Special colors-->
     <color name="dark_red_default">#FFFF0000</color>
 
-    <color name="tomato">#FF6347</color>
-    <color name="orange">#FFA500</color>
-    <color name="pink">#FF69B4</color>
-
-    <color name="transparent">#00000000</color>
-    <color name="transparent1">#11000000</color>
-    <color name="transparent2">#33000000</color>
-    <color name="transparent3">#66000000</color>
-
-    <color name="green">#008000</color>
-    <color name="green2">#8DBE53</color>
-
-    <color name="blue">#0000FF</color>
-    <color name="blue1">#3790ec</color>
-    <color name="trans_blue2">#990291d9</color>
-    <color name="blue2">#0091d9</color>
-    <color name="blue3">#3790ec</color>
-
-    <color name="yellow">#ffff00</color>
-    <color name="yellow1">#f9b72c</color>
-    <color name="trans_yellow1">#AAF59900</color>
-
-    <color name="trans_white">#ccffffff</color>
-    <color name="white">#ffffff</color>
-    <color name="white1">#f8f8f8</color>
-
-    <color name="black">#000000</color>
-    <color name="trans_black">#CC000000</color>
-    <color name="trans_black2">#B0000000</color>
-    <color name="black1">#21211F</color>
-    <color name="black2">#333333</color>
-
-    <color name="trans_grey0">#CC333333</color>
-    <color name="trans_grey1">#CC555555</color>
-    <color name="grey0">#696969</color>
-    <color name="grey">#808080</color>
-    <color name="grey1">#909090</color>
-    <color name="grey2">#e0e0e0</color>
-    <color name="grey3">#f0f0f0</color>
-
-    <color name="text_default">#ff454545</color>
-
 </resources>

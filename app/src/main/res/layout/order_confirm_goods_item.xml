@@ -9,7 +9,7 @@
     android:paddingRight="10dp"
     android:paddingTop="10dp">
 
-    <com.centling.widget.FlexibleImageView
+    <com.fionera.base.widget.FlexibleImageView
         android:id="@+id/iv_order_confirm_goods_preview"
         android:layout_width="80dp"
         android:layout_height="100dp"

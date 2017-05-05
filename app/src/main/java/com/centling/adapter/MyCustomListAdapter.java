@@ -15,7 +15,7 @@ import com.centling.http.ApiManager;
 import com.centling.util.ImageUtil;
 import com.centling.util.ShowDialog;
 import com.centling.util.ShowToast;
-import com.centling.widget.FlexibleImageView;
+import com.fionera.base.widget.FlexibleImageView;
 import com.centling.widget.ProcessDialog;
 
 import org.greenrobot.eventbus.EventBus;

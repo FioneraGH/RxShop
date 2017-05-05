@@ -13,7 +13,7 @@ import com.centling.R;
 import com.centling.activity.GoodsDetailActivity;
 import com.centling.entity.FootPrintBean;
 import com.centling.util.ImageUtil;
-import com.centling.widget.FlexibleImageView;
+import com.fionera.base.widget.FlexibleImageView;
 
 import java.util.List;
 import java.util.Locale;

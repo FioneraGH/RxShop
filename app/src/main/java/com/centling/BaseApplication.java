@@ -1,11 +1,9 @@
 package com.centling;
 
 import android.app.ActivityManager;
-import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -26,17 +24,8 @@ import timber.log.Timber;
  */
 
 public class BaseApplication
-        extends Application {
+        extends com.fionera.base.BaseApplication {
     protected static BaseApplication instance;
-
-    public static BaseApplication getInstance() {
-        return instance;
-    }
-
-    public static int screenWidth;
-    public static int screenHeight;
-    public static float screenDensity;
-    public static float scaledDensity;
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -47,15 +36,12 @@ public class BaseApplication
     @Override
     public void onCreate() {
         super.onCreate();
-        instance = this;
 
         if (!adjustMainProcess()) {
             return;
         }
 
         Timber.d("Application Start Time:%s", System.currentTimeMillis());
-
-        getDisplayMetrics();
 
         BGASwipeBackManager.getInstance().init(this);
 
@@ -119,13 +105,5 @@ public class BaseApplication
     public void onTerminate() {
         super.onTerminate();
         instance = null;
-    }
-
-    private void getDisplayMetrics() {
-        DisplayMetrics metric = getApplicationContext().getResources().getDisplayMetrics();
-        screenWidth = metric.widthPixels;
-        screenHeight = metric.heightPixels;
-        screenDensity = metric.density;
-        scaledDensity = metric.scaledDensity;
     }
 }

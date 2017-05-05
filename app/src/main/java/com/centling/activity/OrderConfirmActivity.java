@@ -26,7 +26,7 @@ import com.centling.payment.ali.AlipayUtils;
 import com.centling.payment.wx.WXPayUtil;
 import com.centling.popupwindow.ChooseDeliveryPopup;
 import com.centling.popupwindow.ChoosePayMethodPopup;
-import com.centling.util.DisplayUtil;
+import com.fionera.base.util.DisplayUtil;
 import com.centling.util.ImageUtil;
 import com.centling.util.ShowDialog;
 import com.centling.util.ShowToast;

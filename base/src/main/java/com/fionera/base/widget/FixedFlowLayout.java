@@ -1,4 +1,4 @@
-package com.centling.widget;
+package com.fionera.base.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,9 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.centling.R;
+import com.fionera.base.R;
 
 /**
+ * FixedFlowLayout
  * Created by victor on 16-8-10
  */
 

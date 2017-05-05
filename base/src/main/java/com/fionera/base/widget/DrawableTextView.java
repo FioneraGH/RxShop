@@ -1,4 +1,4 @@
-package com.centling.widget;
+package com.fionera.base.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
-import com.centling.R;
+import com.fionera.base.R;
 
 /**
  * DrawableTextView
@@ -53,37 +53,27 @@ public class DrawableTextView extends AppCompatTextView {
             int index;
             for (int i = 0; i < count; i++) {
                 index = a.getIndex(i);
-                switch (index) {
-                    case R.styleable.DrawableTextView_left_height:
-                        leftHeight = a.getDimensionPixelSize(index, 0);
-                        break;
-                    case R.styleable.DrawableTextView_left_width:
-                        leftWidth = a.getDimensionPixelSize(index, 0);
-                        break;
-                    case R.styleable.DrawableTextView_top_height:
-                        topHeight = a.getDimensionPixelSize(index, 0);
-                        break;
-                    case R.styleable.DrawableTextView_top_width:
-                        topWidth = a.getDimensionPixelSize(index, 0);
-                        break;
-                    case R.styleable.DrawableTextView_right_height:
-                        rightHeight = a.getDimensionPixelSize(index, 0);
-                        break;
-                    case R.styleable.DrawableTextView_right_width:
-                        rightWidth = a.getDimensionPixelSize(index, 0);
-                        break;
-
-                    case R.styleable.DrawableTextView_bottom_height:
-                        bottomHeight = a.getDimensionPixelSize(index, 0);
-                        break;
-                    case R.styleable.DrawableTextView_bottom_width:
-                        bottomWidth = a.getDimensionPixelSize(index, 0);
-                        break;
+                if (index == R.styleable.DrawableTextView_left_height) {
+                    leftHeight = a.getDimensionPixelSize(index, 0);
+                } else if (index == R.styleable.DrawableTextView_left_width) {
+                    leftWidth = a.getDimensionPixelSize(index, 0);
+                } else if (index == R.styleable.DrawableTextView_top_height) {
+                    topHeight = a.getDimensionPixelSize(index, 0);
+                } else if (index == R.styleable.DrawableTextView_top_width) {
+                    topWidth = a.getDimensionPixelSize(index, 0);
+                } else if (index == R.styleable.DrawableTextView_right_height) {
+                    rightHeight = a.getDimensionPixelSize(index, 0);
+                } else if (index == R.styleable.DrawableTextView_right_width) {
+                    rightWidth = a.getDimensionPixelSize(index, 0);
+                } else if (index == R.styleable.DrawableTextView_bottom_height) {
+                    bottomHeight = a.getDimensionPixelSize(index, 0);
+                } else if (index == R.styleable.DrawableTextView_bottom_width) {
+                    bottomWidth = a.getDimensionPixelSize(index, 0);
                 }
             }
 
-            /**
-             * 取一圈修改大小，大小是读取的
+            /*
+              取一圈修改大小，大小是读取的
              */
             Drawable[] drawables = getCompoundDrawables();
             setImageSize(drawables[0], DRAWABLE_LEFT);
@@ -91,8 +81,8 @@ public class DrawableTextView extends AppCompatTextView {
             setImageSize(drawables[2], DRAWABLE_RIGHT);
             setImageSize(drawables[3], DRAWABLE_BOTTOM);
             setCompoundDrawables(drawables[0], drawables[1], drawables[2], drawables[3]);
+            a.recycle();
         }
-        a.recycle();
     }
 
     /**

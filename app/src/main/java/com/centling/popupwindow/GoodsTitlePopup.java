@@ -15,7 +15,7 @@ import android.widget.PopupWindow;
 
 import com.centling.R;
 import com.centling.activity.BaseActivity;
-import com.centling.util.DisplayUtil;
+import com.fionera.base.util.DisplayUtil;
 
 public class GoodsTitlePopup
         extends PopupWindow

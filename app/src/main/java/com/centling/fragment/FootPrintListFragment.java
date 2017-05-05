@@ -13,7 +13,7 @@ import com.centling.entity.FootPrintBean;
 import com.centling.event.CollectionRelationEvent;
 import com.centling.http.ApiManager;
 import com.centling.util.ShowToast;
-import com.centling.widget.AutoRecyclerView;
+import com.fionera.base.widget.AutoRecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

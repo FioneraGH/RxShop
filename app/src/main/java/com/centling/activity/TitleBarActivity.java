@@ -2,14 +2,13 @@ package com.centling.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.centling.R;
-import com.centling.util.DisplayUtil;
+import com.fionera.base.util.DisplayUtil;
 import com.centling.widget.TitleBar;
 
 public abstract class TitleBarActivity

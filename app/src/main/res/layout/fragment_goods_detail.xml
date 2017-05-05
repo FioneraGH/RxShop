@@ -270,7 +270,7 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <com.centling.widget.FlexibleImageView
+                <com.fionera.base.widget.FlexibleImageView
                     android:id="@+id/detail_view_fiv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -278,12 +278,12 @@
                     app:proportion_height="1"
                     app:proportion_width="10" />
 
-                <com.centling.widget.DetailWebView
+                <com.fionera.base.widget.DetailWebView
                     android:id="@+id/wv_goods_detail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
-                <com.centling.widget.FlexibleImageView
+                <com.fionera.base.widget.FlexibleImageView
                     android:id="@+id/fiv_goods_detail_recommended"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

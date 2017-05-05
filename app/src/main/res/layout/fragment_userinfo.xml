@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.centling.widget.PullToZoomScrollView
+    <com.fionera.base.widget.PullToZoomScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
@@ -81,7 +81,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center">
 
-                            <com.centling.widget.CircleTextImageView
+                            <com.fionera.base.widget.CircleTextImageView
                                 android:id="@+id/iv_user_info_user_avator"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
@@ -100,7 +100,7 @@
                                 android:textSize="18sp"
                                 tools:text="名字" />
 
-                            <com.centling.widget.DrawableTextView
+                            <com.fionera.base.widget.DrawableTextView
                                 android:id="@+id/tvUserInfoMemberLevel"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                                 app:left_height="24dp"
                                 app:left_width="20dp" />
 
-                            <com.centling.widget.DrawableTextView
+                            <com.fionera.base.widget.DrawableTextView
                                 android:id="@+id/tvUserInfoMemberNormal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -203,7 +203,7 @@
                 android:layout_height="8dp"
                 android:background="@color/grey3" />
 
-            <com.centling.widget.DrawableTextView
+            <com.fionera.base.widget.DrawableTextView
                 android:id="@+id/tv_user_info_all_order"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -237,7 +237,7 @@
                     app:badge_horizontalMargin="16dp"
                     app:badge_verticalMargin="2dp">
 
-                    <com.centling.widget.DrawableTextView
+                    <com.fionera.base.widget.DrawableTextView
                         android:id="@+id/tv_user_info_unpay_order"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -262,7 +262,7 @@
                     app:badge_horizontalMargin="16dp"
                     app:badge_verticalMargin="2dp">
 
-                    <com.centling.widget.DrawableTextView
+                    <com.fionera.base.widget.DrawableTextView
                         android:id="@+id/tv_user_info_unpost_order"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -287,7 +287,7 @@
                     app:badge_horizontalMargin="16dp"
                     app:badge_verticalMargin="2dp">
 
-                    <com.centling.widget.DrawableTextView
+                    <com.fionera.base.widget.DrawableTextView
                         android:id="@+id/tv_user_info_unreceive_order"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -312,7 +312,7 @@
                     app:badge_horizontalMargin="16dp"
                     app:badge_verticalMargin="2dp">
 
-                    <com.centling.widget.DrawableTextView
+                    <com.fionera.base.widget.DrawableTextView
                         android:id="@+id/tv_user_info_after_service"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -335,7 +335,7 @@
                 android:layout_height="8dp"
                 android:background="@color/grey3" />
 
-            <com.centling.widget.DrawableTextView
+            <com.fionera.base.widget.DrawableTextView
                 android:id="@+id/tv_user_info_all_collection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -359,7 +359,7 @@
                 android:orientation="horizontal"
                 android:padding="5dp">
 
-                <com.centling.widget.DrawableTextView
+                <com.fionera.base.widget.DrawableTextView
                     android:id="@+id/tv_user_info_goods_collection"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -381,7 +381,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@color/grey1" />
 
-                <com.centling.widget.DrawableTextView
+                <com.fionera.base.widget.DrawableTextView
                     android:id="@+id/tv_user_info_customization"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -403,7 +403,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@color/grey1" />
 
-                <com.centling.widget.DrawableTextView
+                <com.fionera.base.widget.DrawableTextView
                     android:id="@+id/tv_user_info_footprint"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -435,7 +435,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp">
 
-                <com.centling.widget.DrawableTextView
+                <com.fionera.base.widget.DrawableTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -460,7 +460,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp">
 
-                <com.centling.widget.DrawableTextView
+                <com.fionera.base.widget.DrawableTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -486,7 +486,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp">
 
-                <com.centling.widget.DrawableTextView
+                <com.fionera.base.widget.DrawableTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -512,7 +512,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp">
 
-                <com.centling.widget.DrawableTextView
+                <com.fionera.base.widget.DrawableTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -543,5 +543,5 @@
                 </com.centling.widget.badgeview.BGABadgeLinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </com.centling.widget.PullToZoomScrollView>
+    </com.fionera.base.widget.PullToZoomScrollView>
 </layout>

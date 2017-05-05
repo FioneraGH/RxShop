@@ -55,7 +55,7 @@
         android:paddingTop="15dp"
         android:visibility="invisible">
 
-        <com.centling.widget.CircleTextImageView
+        <com.fionera.base.widget.CircleTextImageView
             android:id="@+id/iv_search_friend"
             android:layout_width="80dp"
             android:layout_height="80dp"

@@ -14,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.centling.hower"
+        applicationId "com.centling.shop"
         minSdkVersion 17
         targetSdkVersion 25
         versionCode 1
@@ -38,10 +38,6 @@ android {
     }
 
     buildTypes {
-        debug {
-            minifyEnabled false
-            signingConfig signingConfigs.config
-        }
         release {
             minifyEnabled false
             signingConfig signingConfigs.config
@@ -50,17 +46,24 @@ android {
     }
 
     productFlavors {
-        dev {
-            minSdkVersion 21
+        honny {
             resConfigs("zh_CN", "en_US")
+            applicationId "com.centling.honny"
+            signingConfig signingConfigs.config
+            minSdkVersion 21
             ndk {
                 abiFilters "x86"
             }
             return 0
         }
-        prod {
-            minSdkVersion 17
+        hower {
             resConfigs("zh_CN", "en_US")
+            applicationId "com.centling.hower"
+            signingConfig signingConfigs.config
+            minSdkVersion 21
+            ndk {
+                abiFilters "x86"
+            }
             return 0
         }
     }
@@ -90,12 +93,6 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:exifinterface:25.3.1'
 
-    /* OkHttp */
-    compile 'com.squareup.okhttp3:okhttp:3.7.0'
-    /* Retrofit */
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
     /* EventBus */
     compile 'org.greenrobot:eventbus:3.0.0'
     annotationProcessor 'org.greenrobot:eventbus-annotation-processor:3.0.1'
@@ -114,18 +111,13 @@ dependencies {
     compile 'com.github.VictorAlbertos:RxActivityResult:0.4.3-2.x'
     /* RecyclerView Animators */
     compile 'jp.wasabeef:recyclerview-animators:2.2.5'
-    /* StatusBarUtil */
-    compile('com.jaeger.statusbaruitl:library:1.4.0') {
-        exclude group: 'com.android.support'
-    }
-    /* BGASwipeBackLayout */
-    compile 'cn.bingoogolapple:bga-swipebacklayout:1.0.8@aar'
-    /* Bottom Navigation */
-    compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
-
     /* ARouter */
     compile 'com.alibaba:arouter-api:1.2.1'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.2'
+    /* Bottom Navigation */
+    compile('com.ashokvarma.android:bottom-navigation-bar:1.4.1') {
+        exclude group: 'com.android.support'
+    }
     /* MultiDex */
     compile 'com.android.support:multidex:1.0.1'
 

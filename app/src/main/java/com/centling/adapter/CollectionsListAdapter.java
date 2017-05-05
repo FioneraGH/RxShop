@@ -13,12 +13,11 @@ import com.centling.R;
 import com.centling.activity.GoodsDetailActivity;
 import com.centling.entity.CollectionBean;
 import com.centling.event.CollectionRelationEvent;
-import com.centling.event.OrderRelationEvent;
 import com.centling.http.ApiManager;
 import com.centling.util.ImageUtil;
 import com.centling.util.ShowDialog;
 import com.centling.util.ShowToast;
-import com.centling.widget.FlexibleImageView;
+import com.fionera.base.widget.FlexibleImageView;
 import com.centling.widget.ProcessDialog;
 
 import org.greenrobot.eventbus.EventBus;

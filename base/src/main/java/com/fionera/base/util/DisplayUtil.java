@@ -1,4 +1,4 @@
-package com.centling.util;
+package com.fionera.base.util;
 
 import android.graphics.Paint;
 import android.support.v4.content.ContextCompat;
@@ -9,7 +9,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.widget.TextView;
 
-import com.centling.BaseApplication;
+import com.fionera.base.BaseApplication;
 
 /**
  * DisplayUtil

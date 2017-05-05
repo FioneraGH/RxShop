@@ -1,4 +1,4 @@
-package com.centling.widget;
+package com.fionera.base.widget;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -17,7 +17,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
-import com.centling.R;
+import com.fionera.base.R;
 
 public class ShSwitchView extends View {
 

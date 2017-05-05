@@ -1,4 +1,4 @@
-package com.centling.widget;
+package com.fionera.base.widget;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;

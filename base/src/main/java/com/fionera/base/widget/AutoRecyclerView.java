@@ -1,4 +1,4 @@
-package com.centling.widget;
+package com.fionera.base.widget;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.centling.R;
+import com.fionera.base.R;
 
 import java.util.ArrayList;
 
@@ -41,7 +41,7 @@ public class AutoRecyclerView
     public AutoRecyclerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
-        setOverScrollMode(OVER_SCROLL_NEVER);
+        setOverScrollMode(View.OVER_SCROLL_NEVER);
         post(this);
     }
 
@@ -55,7 +55,7 @@ public class AutoRecyclerView
         }
         if (mAdapter != null) {
             if (((WrapAdapter) mAdapter).getFootersCount() > 0) {
-                mFootViews.get(0).setVisibility(GONE);
+                mFootViews.get(0).setVisibility(View.GONE);
             }
         }
     }
@@ -96,7 +96,7 @@ public class AutoRecyclerView
             @Override
             public void run() {
                 if (mFootViews.size() > 0) {
-                    mFootViews.get(0).setVisibility(VISIBLE);
+                    mFootViews.get(0).setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -107,7 +107,7 @@ public class AutoRecyclerView
             @Override
             public void run() {
                 if (mFootViews.size() > 0) {
-                    mFootViews.get(0).setVisibility(GONE);
+                    mFootViews.get(0).setVisibility(View.GONE);
                 }
             }
         });
@@ -141,28 +141,30 @@ public class AutoRecyclerView
                     @Override
                     public void run() {
                         if (mAdapter.getItemCount() == mFootViews.size() + mHeaderViews.size()) {
-                            ((LinearLayout) mFootViews.get(0)).getChildAt(0).setVisibility(GONE);
-                            ((LinearLayout) mFootViews.get(0)).getChildAt(1).setVisibility(VISIBLE);
+                            ((LinearLayout) mFootViews.get(0)).getChildAt(0).setVisibility(View.GONE);
+                            ((LinearLayout) mFootViews.get(0)).getChildAt(1).setVisibility(
+                                    View.VISIBLE);
                         } else {
-                            ((LinearLayout) mFootViews.get(0)).getChildAt(0).setVisibility(VISIBLE);
-                            ((LinearLayout) mFootViews.get(0)).getChildAt(1).setVisibility(GONE);
+                            ((LinearLayout) mFootViews.get(0)).getChildAt(0).setVisibility(
+                                    View.VISIBLE);
+                            ((LinearLayout) mFootViews.get(0)).getChildAt(1).setVisibility(View.GONE);
                             ((LinearLayout) ((LinearLayout) mFootViews.get(0)).getChildAt(0))
-                                    .getChildAt(0).setVisibility(GONE);
+                                    .getChildAt(0).setVisibility(View.GONE);
                             ((LinearLayout) ((LinearLayout) mFootViews.get(0)).getChildAt(0))
-                                    .getChildAt(1).setVisibility(VISIBLE);
+                                    .getChildAt(1).setVisibility(View.VISIBLE);
                         }
-                        mFootViews.get(0).setVisibility(VISIBLE);
+                        mFootViews.get(0).setVisibility(View.VISIBLE);
                         mLoadDataListener = null;
                     }
                 });
             } else {
                 ((LinearLayout) ((LinearLayout) mFootViews.get(0)).getChildAt(0)).getChildAt(0)
-                        .setVisibility(VISIBLE);
+                        .setVisibility(View.VISIBLE);
                 ((LinearLayout) ((LinearLayout) mFootViews.get(0)).getChildAt(0)).getChildAt(1)
-                        .setVisibility(GONE);
-                ((LinearLayout) mFootViews.get(0)).getChildAt(0).setVisibility(VISIBLE);
-                ((LinearLayout) mFootViews.get(0)).getChildAt(1).setVisibility(GONE);
-                mFootViews.get(0).setVisibility(GONE);
+                        .setVisibility(View.GONE);
+                ((LinearLayout) mFootViews.get(0)).getChildAt(0).setVisibility(View.VISIBLE);
+                ((LinearLayout) mFootViews.get(0)).getChildAt(1).setVisibility(View.GONE);
+                mFootViews.get(0).setVisibility(View.GONE);
             }
         }
     }
@@ -229,7 +231,7 @@ public class AutoRecyclerView
             if (layoutManager.getChildCount() > 0 && lastVisibleItemPosition >= layoutManager
                     .getItemCount() - 1) {
                 if (mFootViews.size() > 0) {
-                    mFootViews.get(0).setVisibility(VISIBLE);
+                    mFootViews.get(0).setVisibility(View.VISIBLE);
                 }
                 // 加载更多
                 isLoadingData = true;

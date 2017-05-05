@@ -3,7 +3,6 @@ package com.centling.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,23 +14,20 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.centling.R;
-import com.centling.activity.GoodsDetailActivity;
 import com.centling.activity.MainActivity;
 import com.centling.constant.RouterConstant;
 import com.centling.entity.CartBean;
 import com.centling.event.CommonEvent;
 import com.centling.http.ApiManager;
-import com.centling.util.DisplayUtil;
+import com.fionera.base.util.DisplayUtil;
 import com.centling.util.ImageUtil;
 import com.centling.util.ShowToast;
 import com.centling.util.TouchHelper;
 import com.centling.util.UserInfoUtil;
-import com.centling.widget.FlexibleImageView;
+import com.fionera.base.widget.FlexibleImageView;
 import com.centling.widget.ProcessDialog;
 
 import org.greenrobot.eventbus.EventBus;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;

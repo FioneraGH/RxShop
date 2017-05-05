@@ -15,7 +15,7 @@
         android:layout_margin="10dp"
         android:orientation="horizontal">
 
-        <com.centling.widget.FlexibleImageView
+        <com.fionera.base.widget.FlexibleImageView
             android:id="@+id/iv_collection_goods_preview"
             android:layout_width="80dp"
             android:layout_height="100dp"

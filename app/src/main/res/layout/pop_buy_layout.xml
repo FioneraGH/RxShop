@@ -107,7 +107,7 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <com.centling.widget.SingleSelectLinearLayout
+            <com.fionera.base.widget.SingleSelectLinearLayout
                 android:id="@+id/ll_payment_choice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                     android:layout_marginTop="15dp"
                     android:src="@drawable/sl_iv_payment_wx" />
 
-            </com.centling.widget.SingleSelectLinearLayout>
+            </com.fionera.base.widget.SingleSelectLinearLayout>
 
             <TextView
                 android:id="@+id/tv_payment_pay"

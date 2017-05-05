@@ -38,7 +38,7 @@
                     android:text="头像" />
 
 
-                <com.centling.widget.CircleTextImageView
+                <com.fionera.base.widget.CircleTextImageView
                     android:id="@+id/iv_user_info_user_avatar"
                     android:layout_width="100dp"
                     android:layout_height="100dp"

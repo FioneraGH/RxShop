@@ -18,7 +18,7 @@ import com.centling.constant.RouterConstant;
 import com.centling.databinding.ActivityGoldsAccountBinding;
 import com.centling.event.CommonEvent;
 import com.centling.http.ApiManager;
-import com.centling.util.DisplayUtil;
+import com.fionera.base.util.DisplayUtil;
 import com.centling.util.SPUtil;
 import com.centling.util.ShowToast;
 import com.trello.rxlifecycle2.android.ActivityEvent;

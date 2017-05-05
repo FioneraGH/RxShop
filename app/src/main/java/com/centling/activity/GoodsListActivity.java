@@ -16,8 +16,8 @@ import com.centling.databinding.ActivityGoodsListBinding;
 import com.centling.entity.CatalogGoodsBean;
 import com.centling.http.ApiManager;
 import com.centling.popupwindow.GoodsTitlePopup;
-import com.centling.util.DisplayUtil;
-import com.centling.widget.DrawableTextView;
+import com.fionera.base.util.DisplayUtil;
+import com.fionera.base.widget.DrawableTextView;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
