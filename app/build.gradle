@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
 
     signingConfigs {
         config {
@@ -16,7 +16,7 @@ android {
     defaultConfig {
         applicationId "com.centling.shop"
         minSdkVersion 17
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
 
@@ -44,6 +44,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions("shop")
 
     productFlavors {
         honny {
@@ -85,47 +87,47 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
-    compile 'com.android.support:cardview-v7:25.3.1'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:exifinterface:25.3.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.0.1'
+    implementation 'com.android.support:recyclerview-v7:26.0.1'
+    implementation 'com.android.support:cardview-v7:26.0.1'
+    implementation 'com.android.support:support-v4:26.0.1'
+    implementation 'com.android.support:design:26.0.1'
+    implementation 'com.android.support:exifinterface:26.0.1'
 
     /* EventBus */
-    compile 'org.greenrobot:eventbus:3.0.0'
+    implementation 'org.greenrobot:eventbus:3.0.0'
     annotationProcessor 'org.greenrobot:eventbus-annotation-processor:3.0.1'
     /* RxJava */
-    compile 'io.reactivex.rxjava2:rxjava:2.0.7'
-    compile 'com.tspoon.traceur:traceur:1.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
+    implementation 'com.tspoon.traceur:traceur:1.0.1'
     /* RxLifecycle */
-    compile 'com.trello.rxlifecycle2:rxlifecycle:2.0.1'
-    compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.0.1'
-    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.0.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle:2.1.0'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-android:2.1.0'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
     /* RxBinding */
-    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
     /* RxPermissions */
-    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4'
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4'
     /* RxActivityResult */
-    compile 'com.github.VictorAlbertos:RxActivityResult:0.4.3-2.x'
+    implementation 'com.github.VictorAlbertos:RxActivityResult:0.4.5-2.x'
     /* RecyclerView Animators */
-    compile 'jp.wasabeef:recyclerview-animators:2.2.5'
+    implementation 'jp.wasabeef:recyclerview-animators:2.2.5'
     /* ARouter */
-    compile 'com.alibaba:arouter-api:1.2.1'
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2'
+    implementation 'com.alibaba:arouter-api:1.2.1.1'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
     /* Bottom Navigation */
-    compile('com.ashokvarma.android:bottom-navigation-bar:1.4.1') {
+    implementation('com.ashokvarma.android:bottom-navigation-bar:1.4.1') {
         exclude group: 'com.android.support'
     }
     /* MultiDex */
-    compile 'com.android.support:multidex:1.0.1'
+    implementation 'com.android.support:multidex:1.0.2'
 
     /* Puller */
-    compile(name: 'ptr_lib', version: '1.0.0', ext: 'aar')
+    implementation(name: 'ptr_lib', version: '1.0.0', ext: 'aar')
     /* Banner */
-    compile(name: 'banner', version: '1.4.8', ext: 'aar')
+    implementation(name: 'banner', version: '1.4.8', ext: 'aar')
 
     /* Base */
-    compile project(':base')
+    implementation project(':base')
 }

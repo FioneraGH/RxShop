@@ -1,6 +1,7 @@
 package com.centling.fragment;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -11,9 +12,8 @@ import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.centling.R;
 import com.centling.constant.RouterConstant;
 import com.centling.databinding.FragmentUserinfoBinding;
@@ -30,9 +30,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-
-import jp.wasabeef.glide.transformations.BlurTransformation;
-import jp.wasabeef.glide.transformations.CropTransformation;
 
 public class UserFragment
         extends BaseFragment implements View.OnClickListener {
@@ -148,26 +145,14 @@ public class UserFragment
     }
 
     private void updateAvatar() {
-        Glide.with(this).load(UserInfoUtil.getAvatar())
-                .into(new SimpleTarget<GlideDrawable>() {
-                    @Override
-                    public void onResourceReady(GlideDrawable resource,
-                                                GlideAnimation<? super GlideDrawable>
-                                                        glideAnimation) {
-                        mFragmentUserinfoBinding.ivUserInfoUserAvator.setImageDrawable(resource);
-                    }
-                });
-        Glide.with(this).load(UserInfoUtil.getAvatar())
-                .bitmapTransform(new BlurTransformation(mContext, 25),
-                        new CropTransformation(mContext, 150, 75))
-                .into(new SimpleTarget<GlideDrawable>() {
-                    @Override
-                    public void onResourceReady(GlideDrawable resource,
-                                                GlideAnimation<? super GlideDrawable>
-                                                        glideAnimation) {
-                        mFragmentUserinfoBinding.backgroundIv.setImageDrawable(resource);
-                    }
-                });
+        Glide.with(this).load(UserInfoUtil.getAvatar()).into(new SimpleTarget<Drawable>() {
+            @Override
+            public void onResourceReady(Drawable resource,
+                                        Transition<? super Drawable> transition) {
+                mFragmentUserinfoBinding.ivUserInfoUserAvator.setImageDrawable(resource);
+                mFragmentUserinfoBinding.backgroundIv.setImageDrawable(resource);
+            }
+        });
     }
 
     private void updateUserName() {
