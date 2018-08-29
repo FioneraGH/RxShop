@@ -1,6 +1,6 @@
 ## shop base
 
-This is a new project .
+This is a new project.
 
 I refactor this project with rxjava.
 
